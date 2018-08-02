@@ -5,15 +5,15 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  routes: [
-    {
-      path: '/page/:pageNum',
-      name: 'page',
-      component: {}
-    },
-    {
-      path: '/',
-      redirect: '/page/1'
-    }
-  ]
+  // routes: [
+  //   {
+  //     path: '/page/:pageNum',
+  //     name: 'page',
+  //     component: {}
+  //   },
+  //   {
+  //     path: '/',
+  //     redirect: '/page/1'
+  //   }
+  // ]
 })

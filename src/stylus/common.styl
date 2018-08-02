@@ -1,0 +1,53 @@
+
+/* 常用边框阴影 */
+.box-shadow {
+    box-shadow 0 2px 10px 0 #e3e7f6
+}
+
+/* 登录注册元素水平垂直居中 */
+.shadow-box {
+    position fixed
+    top 0
+    left 0
+    right 0
+    bottom 0
+    background-color rgba(0,0,0,.3)
+    z-index 200
+    display flex
+    justify-content center
+    align-items center
+}
+
+/* 三个点文本省略 */
+.text {
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+}
+
+/* 媒体查询 */
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+}
+
+/* iPads (portrait and landscape) ----------- */
+/* @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+
+} */
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+
+}
+
+/* 全屏背景 */
+
+html { 
+    background url('bg.png') no-repeat center center fixed 
+    -webkit-background-size cover
+    -moz-background-size cover
+    -o-background-size cover
+    background-size cover
+}
