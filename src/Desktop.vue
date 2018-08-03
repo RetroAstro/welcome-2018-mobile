@@ -1,8 +1,5 @@
 <template>
     <div class="main">
-      <!-- <fresh-header></fresh-header>
-      <router-view></router-view>
-      <fresh-footer></fresh-footer> -->
       <!-- <tab></tab> -->
       <!-- <go-top></go-top> -->
       <!-- <carousel></carousel> -->

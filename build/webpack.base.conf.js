@@ -24,7 +24,9 @@ module.exports = {
           resolve('node_modules')
         ],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            '@phone': resolve('src/components/phone'),
+            '@desktop': resolve('src/components/desktop'),
         }
     },
     module: {
