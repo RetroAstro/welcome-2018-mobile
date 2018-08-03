@@ -3,7 +3,10 @@
     "build": "rimraf dist && npm run build:client",
     "build:client": "cross-env NODE_ENV=production node build/build.js",
     "dev": "npm run dev:client",
-    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.conf.js"
+    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.conf.js",
+    "lint": "eslint --ext .js --ext .vue src/",
+    "lint-fix": "eslint --fix --ext .js --ext .vue src/",
+    "precommit": "npm run lint"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -15,6 +18,7 @@
   "devDependencies": {
     "autoprefixer": "^8.6.5",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.5",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -26,6 +30,14 @@
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "echarts": "^4.1.0",
+    "eslint": "^5.2.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-html": "^4.0.5",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
     "file-loader": "^1.1.11",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",

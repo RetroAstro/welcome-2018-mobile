@@ -14,57 +14,57 @@
 
 <script>
 export default {
-    data() {
-        return {
-            showOptions: false,
-            selected: '',
-            options: [
-                {
-                value: '西红柿鸡蛋'
-                },
-                {
-                value: '青椒抱鸡蛋'
-                },
-                {
-                value: '回锅肉'
-                },
-                {
-                value: '宫保鸡丁'
-                },
-                {
-                value: '地三鲜'
-                }
-            ]
-        }
-    },
-    directives: {
-        clickOut: {
-            bind: function(el, binding) {
-                function handler(e) {
-                    if (el.contains(e.target)) return false
-                    if (binding.expression) {
-                        binding.value()
-                    }
-                }
-                el.handler = handler
-                document.addEventListener('click', el.handler)
-            },
-            unbind: function(el) {
-                document.removeEventListener('click', el.handler)
-            }  
-        }
-    },
-    methods: {
-        choose(value) {
-            this.showOptions = false
-            if (value !== this.selected) {
-                this.selected = value
-            }
+  data () {
+    return {
+      showOptions: false,
+      selected: '',
+      options: [
+        {
+          value: '西红柿鸡蛋'
         },
-        test() {
-            this.showOptions = false
+        {
+          value: '青椒抱鸡蛋'
+        },
+        {
+          value: '回锅肉'
+        },
+        {
+          value: '宫保鸡丁'
+        },
+        {
+          value: '地三鲜'
         }
+      ]
     }
+  },
+  directives: {
+    clickOut: {
+      bind: function (el, binding) {
+        function handler (e) {
+          if (el.contains(e.target)) return false
+          if (binding.expression) {
+            binding.value()
+          }
+        }
+        el.handler = handler
+        document.addEventListener('click', el.handler)
+      },
+      unbind: function (el) {
+        document.removeEventListener('click', el.handler)
+      }
+    }
+  },
+  methods: {
+    choose (value) {
+      this.showOptions = false
+      if (value !== this.selected) {
+        this.selected = value
+      }
+    },
+    test () {
+      this.showOptions = false
+    }
+  }
 }
 </script>
 

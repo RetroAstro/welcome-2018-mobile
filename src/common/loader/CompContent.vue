@@ -14,38 +14,38 @@
 import news from '../../api/index.js'
 
 export default {
-    props: {
-        page: {
-            type: Number,
-            default: 1
-        }
-    },
-    data() {
-        return {
-            list: [],
-            limit: 10
-        }
-    },
-    watch: {
-        page() {
-            this.getNews()
-        }
-    },
-    created() {
-        this.getNews()
-    },
-    methods: {
-        getNews() {
-            news
-            .getList({
-                page: this.page,
-                limit: this.limit
-            })
-            .then((res) => {
-                this.list = res.data.data
-            })
-        }
+  props: {
+    page: {
+      type: Number,
+      default: 1
     }
+  },
+  data () {
+    return {
+      list: [],
+      limit: 10
+    }
+  },
+  watch: {
+    page () {
+      this.getNews()
+    }
+  },
+  created () {
+    this.getNews()
+  },
+  methods: {
+    getNews () {
+      news
+        .getList({
+          page: this.page,
+          limit: this.limit
+        })
+        .then((res) => {
+          this.list = res.data.data
+        })
+    }
+  }
 }
 </script>
 

@@ -22,35 +22,35 @@
 import CompContent from './CompContent.vue'
 
 export default {
-    components: {
-        CompContent
-    },
-    data() {
-        return {
-            currentPage: parseInt(this.$route.params.pageNum),
-            totalPages: 30
-        }
-    },
-    computed: {
-        slide() {
-            var num = this.currentPage % 5 == 0 ? this.currentPage - 1 : this.currentPage
-            var distance = Math.floor(num / 5) * 40
-            return {
-                transform: `translate3d(0, -${distance}px, 0)`
-            }
-        }
-    },
-    methods: {
-        select(n) {
-            this.currentPage = n
-            this.$router.push({name: 'page', params: { pageNum: this.currentPage }})
-        },
-        prevOrNext(n) {
-            this.currentPage += n
-            this.currentPage = this.currentPage < 1 ? 1 : this.currentPage > this.totalPages ? this.totalPages : this.currentPage
-            this.$router.push({name: 'page', params: { pageNum: this.currentPage }})
-        }
+  components: {
+    CompContent
+  },
+  data () {
+    return {
+      currentPage: parseInt(this.$route.params.pageNum),
+      totalPages: 30
     }
+  },
+  computed: {
+    slide () {
+      var num = this.currentPage % 5 === 0 ? this.currentPage - 1 : this.currentPage
+      var distance = Math.floor(num / 5) * 40
+      return {
+        transform: `translate3d(0, -${distance}px, 0)`
+      }
+    }
+  },
+  methods: {
+    select (n) {
+      this.currentPage = n
+      this.$router.push({name: 'page', params: { pageNum: this.currentPage }})
+    },
+    prevOrNext (n) {
+      this.currentPage += n
+      this.currentPage = this.currentPage < 1 ? 1 : this.currentPage > this.totalPages ? this.totalPages : this.currentPage
+      this.$router.push({name: 'page', params: { pageNum: this.currentPage }})
+    }
+  }
 }
 </script>
 

@@ -23,21 +23,21 @@
 // import fox from './components/fox'
 
 var prince = {
-    template: `<div>This is my prince</div>`
+  template: `<div>This is my prince</div>`
 }
 
 var rose = {
-    template: `<div>This is my rose</div>`
+  template: `<div>This is my rose</div>`
 }
 
 var fox = {
-    template: `<div>This is my fox</div>`
+  template: `<div>This is my fox</div>`
 }
 
 export default {
   data () {
     return {
-      currentTab: 'prince'  
+      currentTab: 'prince'
     }
   },
   components: {
@@ -46,12 +46,11 @@ export default {
     fox
   },
   methods: {
-    toggleTab: function(tab) {
+    toggleTab: function (tab) {
       this.currentTab = tab
     }
   }
 }
-
 </script>
 
 <style lang="stylus" scoped>

@@ -8,36 +8,36 @@
 
 <script>
 export default {
-    data() {
-        return {
-            show: true
-        }
-    },
-    methods: {
-        showIcon() {
-            this.show = document.documentElement.scrollTop < 500 ? false : true
-        },
-        BacktoTop() {
-            var timer = null
-            cancelAnimationFrame(timer)
-            var startTime = +new Date()
-            var b = document.body.scrollTop || document.documentElement.scrollTop
-            var d = 300
-            var c = b
-            timer = requestAnimationFrame(function func() {
-                var t = d - Math.max(0, startTime - (+new Date()) + d)
-                document.documentElement.scrollTop = document.body.scrollTop = t * (-c) / d + b
-                timer = requestAnimationFrame(func)
-                if (t == d) {
-                    cancelAnimationFrame(timer)
-                }
-            })
-            window.addEventListener('scroll', this.showIcon)
-        }
-    },
-    beforeDestroy() {
-        window.removeEventListener('scroll', this.showIcon)
+  data () {
+    return {
+      show: true
     }
+  },
+  methods: {
+    showIcon () {
+      this.show = !(document.documentElement.scrollTop < 500)
+    },
+    BacktoTop () {
+      var timer = null
+      cancelAnimationFrame(timer)
+      var startTime = +new Date()
+      var b = document.body.scrollTop || document.documentElement.scrollTop
+      var d = 300
+      var c = b
+      timer = requestAnimationFrame(function func () {
+        var t = d - Math.max(0, startTime - (+new Date()) + d)
+        document.documentElement.scrollTop = document.body.scrollTop = t * (-c) / d + b
+        timer = requestAnimationFrame(func)
+        if (t === d) {
+          cancelAnimationFrame(timer)
+        }
+      })
+      window.addEventListener('scroll', this.showIcon)
+    }
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.showIcon)
+  }
 }
 </script>
 

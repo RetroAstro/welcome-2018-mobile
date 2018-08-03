@@ -28,138 +28,136 @@
 <script>
 
 export default {
-    directives: {
-        drag: {
-            bind(el) {
-                el.onmousedown = (e) => {
-                    let parent = findParent(el, 'outer-box')
-                    let el_screen = parent.querySelector('.drag-screen')
-                    el = parent.querySelector('.drag-map')
-                    if ( el.classList.contains('initial') ) {
-                        return
-                    }
-                    let range = getComputedStyle(el).transform.slice(9, 10) / 20
-                    let maxWidth = el.clientWidth * range
-                    let maxHeight = el.clientHeight * range
-                    let disX = e.clientX - el.offsetLeft
-                    let disY = e.clientY - el.offsetTop
-                    document.onmousemove = (e) => {
-                        let left = e.clientX - disX    
-                        let top = e.clientY - disY
-                        if (left < - maxWidth) {
-                            left = - maxWidth
-                        } 
-                        else if (left > maxWidth) {
-                            left = maxWidth
-                        }
-                        if (top < - maxHeight) {
-                            top = - maxHeight
-                        } 
-                        else if (top > maxHeight) {
-                            top = maxHeight
-                        }
-                        el.style.left = left + 'px'
-                        el_screen.style.left = left + 'px'
-                        el.style.top = top + 'px'
-                        el_screen.style.top = top + 'px'
-                    }
-                    document.onmouseup = (e) => {
-                        document.onmousemove = null
-                        document.onmouseup = null
-                    }
-                }
-                function findParent(ele, sle) {
-                    var parent= ele.parentNode
-                    while ( !parent.classList.contains(sle) ) {
-                        parent = parent.parentNode
-                    }
-                    return parent
-                }
+  directives: {
+    drag: {
+      bind (el) {
+        el.onmousedown = (e) => {
+          let parent = findParent(el, 'outer-box')
+          let elScreen = parent.querySelector('.drag-screen')
+          el = parent.querySelector('.drag-map')
+          if (el.classList.contains('initial')) {
+            return
+          }
+          let range = getComputedStyle(el).transform.slice(9, 10) / 20
+          let maxWidth = el.clientWidth * range
+          let maxHeight = el.clientHeight * range
+          let disX = e.clientX - el.offsetLeft
+          let disY = e.clientY - el.offsetTop
+          document.onmousemove = (e) => {
+            let left = e.clientX - disX
+            let top = e.clientY - disY
+            if (left < -maxWidth) {
+              left = -maxWidth
+            } else if (left > maxWidth) {
+              left = maxWidth
             }
+            if (top < -maxHeight) {
+              top = -maxHeight
+            } else if (top > maxHeight) {
+              top = maxHeight
+            }
+            el.style.left = left + 'px'
+            elScreen.style.left = left + 'px'
+            el.style.top = top + 'px'
+            elScreen.style.top = top + 'px'
+          }
+          document.onmouseup = (e) => {
+            document.onmousemove = null
+            document.onmouseup = null
+          }
         }
-    },
-    data() {
-        return {
-            Scale: 1,
-            name: '',
-            aim: false,
-            slide: false,
-            sites: [
-                {
-                    name: '情人坡',
-                    top: 20,
-                    left: 20,
-                    location:[387, 288]
-                },
-                {
-                    name: '红高粱',
-                    top: 40,
-                    left: 40,
-                    location:[107, 102]
-                },
-                {
-                    name: '千喜鹊',
-                    top: 60,
-                    left: 60,
-                    location:[-229, -144]
-                },
-                {
-                    name: '信科楼',
-                    top: 80,
-                    left: 80,
-                    location:[-387, -288]
-                },
-                {
-                    name: '八十万',
-                    top: 50,
-                    left: 50,
-                    location:[-49, -20]
-                }
-            ]
+        function findParent (ele, sle) {
+          var parent = ele.parentNode
+          while (!parent.classList.contains(sle)) {
+            parent = parent.parentNode
+          }
+          return parent
         }
-    },
-    computed: {
-        changeSize() {
-            var style = {
-                transform: `scale(${this.Scale})`
-            }
-            if (this.aim) {
-                style['left'] = this.aim[0] + 'px'
-                style['top'] = this.aim[1] + 'px'
-                this.aim = false
-            }
-            if (this.Scale == 1) {
-                style['left'] = '0px'
-                style['top'] = '0px'
-                this.name = ''
-            }
-            return style
-        }
-    },
-    methods: {
-        change(n) {
-            if (n < 0) {
-                this.Scale = 1
-                return
-            }
-            if (this.Scale + n > 1.91) return
-            this.Scale += n
-        },
-        findLocation() {
-            if ( !this.name ) return
-            this.sites.map((site) => {
-                if (site.name.indexOf(this.name) !== -1) {
-                    this.Scale = 1.9
-                    this.slide = true
-                    this.aim = site.location
-                }
-            }) 
-        },
-        clear() {
-            this.slide = false
-            this.aim = 'update'
-        }
+      }
     }
+  },
+  data () {
+    return {
+      Scale: 1,
+      name: '',
+      aim: false,
+      slide: false,
+      sites: [
+        {
+          name: '情人坡',
+          top: 20,
+          left: 20,
+          location: [387, 288]
+        },
+        {
+          name: '红高粱',
+          top: 40,
+          left: 40,
+          location: [107, 102]
+        },
+        {
+          name: '千喜鹊',
+          top: 60,
+          left: 60,
+          location: [-229, -144]
+        },
+        {
+          name: '信科楼',
+          top: 80,
+          left: 80,
+          location: [-387, -288]
+        },
+        {
+          name: '八十万',
+          top: 50,
+          left: 50,
+          location: [-49, -20]
+        }
+      ]
+    }
+  },
+  computed: {
+    changeSize () {
+      var style = {
+        transform: `scale(${this.Scale})`
+      }
+      if (this.aim) {
+        style['left'] = this.aim[0] + 'px'
+        style['top'] = this.aim[1] + 'px'
+        this.aim = false
+      }
+      if (this.Scale === 1) {
+        style['left'] = '0px'
+        style['top'] = '0px'
+        this.name = ''
+      }
+      return style
+    }
+  },
+  methods: {
+    change (n) {
+      if (n < 0) {
+        this.Scale = 1
+        return
+      }
+      if (this.Scale + n > 1.91) return
+      this.Scale += n
+    },
+    findLocation () {
+      if (!this.name) return
+      this.sites.map((site) => {
+        if (site.name.indexOf(this.name) !== -1) {
+          this.Scale = 1.9
+          this.slide = true
+          this.aim = site.location
+        }
+      })
+    },
+    clear () {
+      this.slide = false
+      this.aim = 'update'
+    }
+  }
 }
 </script>
 

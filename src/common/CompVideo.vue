@@ -24,32 +24,32 @@
  *  3. 音量控制、全屏显示
  */
 export default {
-    data() {
-        return {
-            isPaused: true,
-            status: 'play'
-        }
-    },
-    methods: {
-        play() {
-            if (this.isPaused) {
-                this.$refs.player.play()
-                this.isPaused = false
-                this.status = 'pause'
-            } else {
-                this.$refs.player.pause()
-                this.isPaused = true
-                this.status = 'play'
-            }
-        },
-        enterfullScreen() {
-            var player = this.$refs.player
-            player.requestFullscreen ? player.requestFullscreen() : player.webkitRequestFullScreen()
-        },
-        exitfullScreen() {
-            document.exitFullscreen ? document.exitFullscreen() : document.webkitCancelFullScreen()
-        }
+  data () {
+    return {
+      isPaused: true,
+      status: 'play'
     }
+  },
+  methods: {
+    play () {
+      if (this.isPaused) {
+        this.$refs.player.play()
+        this.isPaused = false
+        this.status = 'pause'
+      } else {
+        this.$refs.player.pause()
+        this.isPaused = true
+        this.status = 'play'
+      }
+    },
+    enterfullScreen () {
+      var player = this.$refs.player
+      player.requestFullscreen ? player.requestFullscreen() : player.webkitRequestFullScreen()
+    },
+    exitfullScreen () {
+      document.exitFullscreen ? document.exitFullscreen() : document.webkitCancelFullScreen()
+    }
+  }
 }
 </script>
 

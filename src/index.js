@@ -15,7 +15,6 @@ new Vue({
   render: h => h(Desktop)
 }).$mount('#app')
 
-
 // 移动端
 // import Phone from './Phone.vue'
 // import phoneRouter from './router/phone'
