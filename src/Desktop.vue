@@ -6,9 +6,9 @@
       <!-- <echarts-practice></echarts-practice> -->
       <!-- <comp-video></comp-video> -->
       <!-- <count-down></count-down> -->
-      <!-- <pagination></pagination> -->
+      <pagination></pagination>
       <!-- <comp-select></comp-select> -->
-      <comp-map></comp-map>
+      <!-- <comp-map></comp-map> -->
     </div>
 </template>
 
@@ -20,9 +20,9 @@
 // import EchartsPractice from './common/EchartsPractice.vue'
 // import CompVideo from './common/CompVideo.vue'
 // import CountDown from './common/CountDown.vue'
-// import Pagination from './common/loader/Pagination.vue'
+import Pagination from './common/loader/Pagination.vue'
 // import CompSelect from './common/CompSelect.vue'
-import CompMap from './common/map/CompMap.vue'
+// import CompMap from './common/map/CompMap.vue'
 
 export default {
   components: {
@@ -32,9 +32,9 @@ export default {
     // EchartsPractice,
     // CompVideo,
     // CountDown,
-    // Pagination,
     // CompSelect,
-    CompMap
+    // CompMap,
+    Pagination
   }
 }
 </script>

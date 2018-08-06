@@ -21,6 +21,11 @@
 
 import CompContent from './CompContent.vue'
 
+/**
+ * this.$route 为当前 router 跳转对象里面可以获取 name、path、query、params 等
+ * this.$router 为 router 实例，想要导航到不同URL, 则使用 $router.push 方法, 注意在 new Vue 时只能使用 router 作为属性名添加！
+ */
+
 export default {
   components: {
     CompContent

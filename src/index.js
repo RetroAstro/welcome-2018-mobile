@@ -7,22 +7,20 @@ import './stylus/index.styl'
 
 // PC端
 import Desktop from './Desktop.vue'
-import desktopRouter from './router/desktop'
+import router from './router/desktop'
 
 new Vue({
-  Desktop,
-  desktopRouter,
+  router,
   render: h => h(Desktop)
 }).$mount('#app')
 
 // 移动端
 // import Phone from './Phone.vue'
-// import phoneRouter from './router/phone'
+// import router from './router/phone'
 // import { VueHammer } from 'vue2-hammer'
 // Vue.use(VueHammer)
 
 // new Vue({
-//   Phone,
-//   phoneRouter,
+//   router,
 //   render: h => h(Phone)
 // }).$mount('#app')
