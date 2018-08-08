@@ -46,13 +46,19 @@ exports.cssLoaders = function (options) {
       }
     }
 
+    const stylusOptions = {
+      import: [
+        path.join(__dirname, "../src/stylus/variable.styl")
+      ]
+    }
+
     return {
       // css: generateLoaders(),
       // less: generateLoaders('less'),
       // sass: generateLoaders('sass', { indentedSyntax: true }),
       // scss: generateLoaders('sass'),
-      stylus: generateLoaders('stylus'),
-      styl: generateLoaders('stylus')
+      stylus: generateLoaders('stylus', stylusOptions),
+      styl: generateLoaders('stylus', stylusOptions)
     }
 }
 

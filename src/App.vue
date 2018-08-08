@@ -1,12 +1,10 @@
 <template>
     <div class="main">
-
+      <router-view></router-view>
     </div>
 </template>
 
 <script>
-
-// import PhoneHeader from '@phone/header.vue'
 
 export default {
   components: {

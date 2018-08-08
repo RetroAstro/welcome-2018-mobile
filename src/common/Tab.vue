@@ -73,6 +73,7 @@ export default {
         font-size 10px
     }
 }
+
 .fade-enter-active, .fade-leave-active 
   transition: opacity .3s ease
 .fade-enter, .fade-leave-to 

@@ -24,24 +24,22 @@ module.exports = {
           resolve('node_modules')
         ],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js',
-            '@phone': resolve('src/components/phone'),
-            '@desktop': resolve('src/components/desktop'),
+            'vue$': 'vue/dist/vue.esm.js'
         }
     },
     module: {
         rules: [
-            {
-                test: /\.(js|vue)$/,
-                use: [
-                  {
-                    loader: 'eslint-loader'
-                  }
-                ],
-                enforce: 'pre',
-                include: [resolve('src')],
-                exclude: /node_modules/
-            },
+            // {
+            //     test: /\.(js|vue)$/,
+            //     use: [
+            //       {
+            //         loader: 'eslint-loader'
+            //       }
+            //     ],
+            //     enforce: 'pre',
+            //     include: [resolve('src')],
+            //     exclude: /node_modules/
+            // },
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',

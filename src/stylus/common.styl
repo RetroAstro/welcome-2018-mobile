@@ -19,38 +19,20 @@
 }
 
 /* 三个点文本省略 */
-.text {
+.ellipsis {
     overflow hidden
     text-overflow ellipsis
     white-space nowrap
 }
 
-/* 媒体查询 */
-
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-
-}
-
-/* iPads (portrait and landscape) ----------- */
-/* @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-
-} */
-
-/* Desktops and laptops ----------- */
-@media only screen and (min-width : 1224px) {
-
-}
-
 /* 全屏背景 */
-
-html { 
-    background url('bg.png') no-repeat center center fixed 
-    -webkit-background-size cover
-    -moz-background-size cover
-    -o-background-size cover
-    background-size cover
-}
+// html { 
+//     background url('bg.png') no-repeat center center fixed 
+//     -webkit-background-size cover
+//     -moz-background-size cover
+//     -o-background-size cover
+//     background-size cover
+// }
 
 // 滚动条整体部分
 ::-webkit-scrollbar {
@@ -71,3 +53,46 @@ html {
 ::-webkit-scrollbar-button {
 
 }
+
+.flex-between {
+    display flex
+    align-items center
+    justify-content space-between
+}
+
+.flex-around {
+    display flex
+    align-items center
+    justify-content space-around
+}
+
+.flex-center {
+    display flex
+    align-items center
+    justify-content center
+}
+
+.translate-center {
+    position absolute
+    left 50%
+    top 50%
+    transform translate(-50%, -50%)
+}
+
+.bg-cover {
+    background-size cover
+    background-repeat no-repeat
+    background-position center center
+}
+
+.bg-cover-all {
+    background-size 100% 100%
+    background-repeat no-repeat
+    background-position center center
+}
+
+/* 渐入渐出效果 */
+.fade-enter-active, .fade-leave-active 
+  transition: opacity .3s ease
+.fade-enter, .fade-leave-to 
+  opacity: 0

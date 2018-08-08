@@ -1,0 +1,21 @@
+
+vw_fontsize = 75
+
+vw_design = 750
+
+html {
+    font-size (vw_fontsize / (vw_design / 2)) * 100vw
+    @media screen and (max-width: 320px) {
+        font-size 64px
+    }
+    @media screen and (min-width: 540px) {
+        font-size 108px
+    }
+}
+
+body {
+    max-width 540px
+    min-width 320px
+    margin 0 auto
+    font-size 16px
+}
