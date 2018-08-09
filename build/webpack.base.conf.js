@@ -41,6 +41,11 @@ module.exports = {
             //     exclude: /node_modules/
             // },
             {
+                test: /\.css$/,
+                loader: 'css-loader',
+                include: [resolve('node_modules')]
+            },
+            {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 include: [resolve('src')],
@@ -58,7 +63,6 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
-                include: [resolve('src')],
                 options: {
                   limit: 10000,
                   name: utils.assetsPath('img/[name].[hash:7].[ext]')

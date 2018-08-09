@@ -27,7 +27,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         contentBase: false,
         compress: true,
         open: true,
-        quiet: true
+        quiet: true,
+        disableHostCheck: true
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),

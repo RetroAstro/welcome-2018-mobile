@@ -1,14 +1,19 @@
 <template>
-    <div class="prex">
-       <img src="../assets/map.jpg" preview="1" class="preview-wrap">
-    </div>
+  <vue-preview :slides="slide1"></vue-preview>
 </template>
 
 <script>
 export default {
   data () {
     return {
-
+      slide1: [
+        {
+          src: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_b.jpg',
+          msrc: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_m.jpg',
+          w: 600,
+          h: 400
+        }
+      ]
     }
   },
   methods: {
@@ -16,17 +21,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-rem(px) {
-    return (px / 75) * 1rem
-}
-.preview-wrap {
-    margin-top rem(25)
-    width rem(300)
-    height rem(250)
-    margin 0 auto
-    background-image url('../assets/map.jpg')
-}
-</style>
-

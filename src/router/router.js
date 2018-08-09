@@ -3,31 +3,35 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const _import = file => () => import('../common/' + file + '.vue')
+const _import = file => () => import(/* webpackChunkName: "async-component" */ '../components/' + file + '.vue')
 
 export default new Router({
   mode: 'history',
   routes: [
     {
       path: '/',
-      component: _import('route/CompRoute'),
-      redirect: '/countdown',
+      redirect: '/index',
+      component: _import('Layout'),
       children: [
         {
-          path: 'countdown',
-          component: _import('CountDown')
+          path: 'index',
+          component: _import('index/Index')
         },
         {
-          path: 'pagination',
-          component: _import('loader/Pagination')
+          path: 'mien',
+          component: _import('mien/Index')
         },
         {
-          path: 'compmap',
-          component: _import('map/CompMap')
+          path: 'tips',
+          component: _import('tips/Index')
         },
         {
-          path: 'compselect',
-          component: _import('CompSelect')
+          path: 'training',
+          component: _import('training/Index')
+        },
+        {
+          path: 'uncover',
+          component: _import('uncover/Index')
         }
       ]
     }
