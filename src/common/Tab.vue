@@ -1,83 +1,48 @@
 <template>
-    <div class="wrap">
-        <div class="tabs">
-            <div class="tab" :class="{ 'active' : currentTab === 'prince' }" @click="toggleTab('prince')">prince</div>
-            <div class="tab" :class="{ 'active' : currentTab === 'rose' }" @click="toggleTab('rose')">rose</div>
-            <div class="tab" :class="{ 'active' : currentTab === 'fox' }" @click="toggleTab('fox')">fox</div>
+    <div class="Box">
+        <div class="nav flex-center">
+            <ul class="nav-inner flex-between">
+                <li 
+                v-for="(item, index) in items" :key="index"
+                :class="[item.name, 'bg-cover-all']"
+                :style="{ backgroundImage: currentName === item.name ? `url('${require(`../../assets/${item.name}_active.png`)}')` : `url('${require(`../../assets/${item.name}.png`)}')` }"
+                @click="handleSwitch(item)"
+                ></li>
+            </ul>
         </div>
-        <transition mode="out-in" name="fade">
-              <prince :is="currentTab" class="current" keep-alive></prince>  
+        <transition mode="out-in" enter-active-class="animated fast bounceIn" leave-active-class="animated fast bounceOut">
+            <dynamic-component :is="currentComponent"></dynamic-component>
         </transition>
     </div>
 </template>
 
 <script>
 
-// Tab 动态组件切换效果
-// :is 特性可以动态绑定组件, 即该标签可以指向任何组件
-// keep-alive 将切换出去的组件保存在内存中, 即不销毁组件
-// transition 实现动态组件的过渡效果, mode: out-in 当前元素先进行过渡，完成之后新元素过渡进入
-
-// import prince from './components/prince'
-// import rose from './components/rose'
-// import fox from './components/fox'
-
-var prince = {
-  template: `<div>This is my prince</div>`
-}
-
-var rose = {
-  template: `<div>This is my rose</div>`
-}
-
-var fox = {
-  template: `<div>This is my fox</div>`
-}
-
 export default {
+  components: {
+
+  },
   data () {
     return {
-      currentTab: 'prince'
+      currentName: '',
+      currentComponent: '',
+      items: [
+        {
+          name: '',
+          currentComponent: ''
+        }
+      ]
     }
   },
-  components: {
-    prince,
-    rose,
-    fox
-  },
   methods: {
-    toggleTab: function (tab) {
-      this.currentTab = tab
+    handleSwitch (item) {
+      this.currentName = item.name
+      this.currentComponent = item.currentComponent
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-.wrap {
-    width 100px
-    text-align center
-    .tabs {
-        display flex
-        justify-content space-between
-        font-size 14px
-        margin-bottom 10px
-        .tab {
-            cursor pointer
-            &.active {
-                color #ffafc9
-            }
-        }
-    }
-    .current {
-        font-size 10px
-    }
-}
-
-.fade-enter-active, .fade-leave-active 
-  transition: opacity .3s ease
-.fade-enter, .fade-leave-to 
-  opacity: 0
 
 </style>
-

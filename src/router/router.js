@@ -19,19 +19,19 @@ export default new Router({
         },
         {
           path: 'mien',
-          component: _import('mien/Index')
+          component: _import('mien/Mien')
         },
         {
           path: 'tips',
-          component: _import('tips/Index')
+          component: _import('tips/Tips')
         },
         {
           path: 'training',
-          component: _import('training/Index')
+          component: _import('training/Training')
         },
         {
-          path: 'uncover',
-          component: _import('uncover/Index')
+          path: 'activity',
+          component: _import('activity/Activity')
         }
       ]
     }

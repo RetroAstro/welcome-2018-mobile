@@ -33,13 +33,16 @@ export default {
 
 <style lang="stylus" scoped>
 .footer {
+    position relative
+    z-index 20
     .text-box {
         text-align center
+        margin-bottom rem(10)
         .nav {
             display flex
             justify-content center
             color #fff
-            font-size 14px
+            font-size 13px
             & > li {
                 margin-left rem(4)
             }
@@ -51,7 +54,8 @@ export default {
                 height rem(20)
                 line-height rem(20)
                 color #fff
-                font-size 12px
+                font-size 10px
+                letter-spacing .5px
             }   
         }
     }
