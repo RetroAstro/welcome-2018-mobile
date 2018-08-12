@@ -2,20 +2,15 @@
     <div class="training-wrapper">
         <div class="train-box">
             <div class="title bg-cover-all"></div>
-            <div class="content bg-cover-all">
-                <div class="nav-box">
-                    <ul class="btns-box flex-between">
-                        <li 
-                        v-for="(item, index) in items" 
-                        :key="index" 
-                        :class="[{active: currentName === item.name}, item.name, 'bg-cover-all', 'btn']"
-                        @click="handleSwitch(item)"
-                        ></li>
-                    </ul>
-                </div>
-                <transition mode="out-in" enter-active-class="animated faster rollIn" leave-active-class="animated faster rollOut">
+            <div class="content bg-cover-all flex-center">
+                <tab 
+                :box="box"
+                :tabList="tabList" 
+                :animate="animate" 
+                :currentName="currentName" 
+                @handleSwitch="handleSwitch">
                     <dynamic-component :is="currentComponent"></dynamic-component>
-                </transition>
+                </tab>
             </div>
         </div>
     </div>
@@ -23,6 +18,7 @@
 
 <script>
 
+import Tab from '@common/Tab.vue'
 import TipsBox from './TipsBox.vue'
 import PastYearBox from './PastYearBox.vue'
 import ContentBox from './ContentBox.vue'
@@ -30,6 +26,7 @@ import RuleBox from './RuleBox.vue'
 
 export default {
   components: {
+    Tab,
     TipsBox,
     PastYearBox,
     ContentBox,
@@ -37,23 +34,28 @@ export default {
   },
   data () {
     return {
-      currentName: 'tips',
+      box: 'training-box',
+      currentName: 'train_tips',
       currentComponent: 'TipsBox',
-      items: [
+      animate: {
+          entrance: 'animated fast rollIn',
+          exits: 'animated fast rollOut'
+      },
+      tabList: [
         {
           name: 'pastyear',
           component: 'PastYearBox'
         },
         {
-          name: 'tips',
+          name: 'train_tips',
           component: 'TipsBox'
         },
         {
-          name: 'content',
+          name: 'train_content',
           component: 'ContentBox'
         },
         {
-          name: 'rule',
+          name: 'train_rule',
           component: 'RuleBox'
         }
       ]
@@ -90,57 +92,37 @@ export default {
             height rem(772)
             background-image url('../../assets/tip_box.png')
             transform translateX(rem(2))
-            .nav-box {
-                width 100%
-                height rem(88)
-                .btns-box {
-                    width 82%
-                    height rem(88)
-                    margin 0 auto
-                    transform translate(rem(-8), rem(8))
-                    .btn {
-                        width rem(64)
-                        height rem(35)
-                        position relative
-                        &::after {
-                            display block
-                            content ''
-                            position absolute
-                            top 0
-                            left 0
-                            right 0
-                            bottom 0
-                            background-size 100% 100%
-                            background-repeat no-repeat
-                            background-position center center
-                            visibility hidden
+            & >>> .training-box {
+                width rem(276)
+                height rem(710)
+                flex-direction column
+                position relative
+                transform translateX(rem(-7))
+                .nav {
+                    width 100%
+                    height rem(50)
+                    .nav-inner {
+                        width 100%
+                        & > li {
+                        width rem(62)
+                        height rem(38)
                         }
                     }
-                    .btn.active::after {
-                        visibility visible
-                    }
-                    .pastyear {
-                        background-image url('../../assets/pastyear.png')
-                        &::after {
-                            background-image url('../../assets/pastyear_active.png')
-                        }
-                    }
-                    .tips {
-                        background-image url('../../assets/train_tips.png')
-                        &::after {
-                            background-image url('../../assets/train_tips_active.png')
-                        }
-                    }
-                    .content {
-                        background-image url('../../assets/train_content.png')
-                        &::after {
-                            background-image url('../../assets/train_content_active.png')
-                        }
-                    }
-                    .rule {
-                        background-image url('../../assets/train_rule.png')
-                        &::after {
-                            background-image url('../../assets/train_rule_active.png')
+                }
+            }
+            & >>> .rule-box {
+                width rem(276)
+                height rem(650)
+                flex-direction column
+                position relative
+                .nav {
+                    width 100%
+                    height rem(40)
+                    .nav-inner {
+                        width 100%
+                        & > li {
+                        width rem(132)
+                        height rem(25)
                         }
                     }
                 }

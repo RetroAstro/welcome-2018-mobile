@@ -1,17 +1,17 @@
 <template>
-    <div class="Box">
+    <div :class="[box,'flex-between']">
         <div class="nav flex-center">
             <ul class="nav-inner flex-between">
                 <li 
-                v-for="(item, index) in items" :key="index"
-                :class="[item.name, 'bg-cover-all']"
-                :style="{ backgroundImage: currentName === item.name ? `url('${require(`../../assets/${item.name}_active.png`)}')` : `url('${require(`../../assets/${item.name}.png`)}')` }"
-                @click="handleSwitch(item)"
+                v-for="(tab, index) in tabList" :key="index"
+                :class="[tab.name, 'bg-cover-all']"
+                :style="{ backgroundImage: currentName === tab.name ? `url('${require(`../assets/${tab.name}_active.png`)}')` : `url('${require(`../assets/${tab.name}.png`)}')` }"
+                @click="handleSwitch(tab)"
                 ></li>
             </ul>
         </div>
-        <transition mode="out-in" enter-active-class="animated fast bounceIn" leave-active-class="animated fast bounceOut">
-            <dynamic-component :is="currentComponent"></dynamic-component>
+        <transition mode="out-in" :enter-active-class="animate.entrance" :leave-active-class="animate.exits">
+            <slot></slot>
         </transition>
     </div>
 </template>
@@ -19,30 +19,34 @@
 <script>
 
 export default {
-  components: {
-
-  },
-  data () {
-    return {
-      currentName: '',
-      currentComponent: '',
-      items: [
-        {
-          name: '',
-          currentComponent: ''
-        }
-      ]
+  props: {
+    box: {
+      type: String,
+      required: true
+    },
+    tabList: {
+      type: Array,
+      required: true,
+      validator (value) {
+        return value.map((val) => typeof val === 'object' && val.name && val.component)
+      }
+    },
+    animate: {
+      type: Object,
+      required: true,
+      validator (value) {
+        return value.entrance && value.exits
+      }
+    },
+    currentName: {
+      type: String,
+      required: true
     }
   },
   methods: {
     handleSwitch (item) {
-      this.currentName = item.name
-      this.currentComponent = item.currentComponent
+      this.$emit('handleSwitch', item)
     }
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-
-</style>

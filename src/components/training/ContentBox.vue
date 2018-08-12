@@ -43,7 +43,6 @@ export default {
         flex 1
         flex-direction column
         padding-bottom rem(50)
-        transform translateX(rem(-8))
         position relative
         .left {
             position absolute

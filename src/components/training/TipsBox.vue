@@ -25,7 +25,6 @@ export default {
     height rem(650)
     background-image url('../../assets/bg1.png')
     margin 0 auto
-    transform translateX(rem(-7))
     position relative
 }
 </style>

@@ -1,34 +1,36 @@
 <template>
-    <div class="rule-box">
-        <div class="menu flex-between">
-            <div 
-            v-for="(item, index) in items" :key="index"
-            :class="[item.name, 'bg-cover-all']"
-            :style="{ backgroundImage: currentName === item.name ? `url('${require(`../../assets/${item.name}_active.png`)}')` : `url('${require(`../../assets/${item.name}.png`)}')` }"
-            @click="handleSwitch(item)"
-            ></div>
-        </div>
-        <transition mode="out-in" enter-active-class="animated faster flipInY" leave-active-class="animated faster flipOutY">
-            <dynamic-component :is="currentComponent"></dynamic-component>
-        </transition>
-    </div>
+    <tab 
+    :box="box"
+    :tabList="tabList" 
+    :animate="animate" 
+    :currentName="currentName" 
+    @handleSwitch="handleSwitch">
+        <dynamic-component :is="currentComponent"></dynamic-component>
+    </tab>
 </template>
 
 <script>
 
+import Tab from '@common/Tab.vue'
 import CompRuleAssign from './CompRuleAssign.vue'
 import CompRuleSchedule from './CompRuleSchedule.vue'
 
 export default {
   components: {
+    Tab,
     CompRuleAssign,
     CompRuleSchedule
   },
   data () {
     return {
+      box: 'rule-box',
       currentName: 'assign',
       currentComponent: 'CompRuleAssign',
-      items: [
+      animate: {
+          entrance: 'animated faster flipInY',
+          exits: 'animated faster flipOutY'
+      },
+      tabList: [
         {
           name: 'assign',
           component: 'CompRuleAssign'
@@ -48,23 +50,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-.rule-box {
-    width rem(276)
-    height rem(650)
-    margin 0 auto
-    transform translateX(rem(-7))
-    position relative
-    .menu {
-        width 100%
-        height rem(40)
-        margin-bottom rem(6)
-        & > div {
-            width rem(133)
-            height rem(26)
-            position relative
-        }
-    }
-}
-</style>
