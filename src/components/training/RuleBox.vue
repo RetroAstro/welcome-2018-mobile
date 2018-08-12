@@ -27,8 +27,8 @@ export default {
       currentName: 'assign',
       currentComponent: 'CompRuleAssign',
       animate: {
-          entrance: 'animated faster flipInY',
-          exits: 'animated faster flipOutY'
+        entrance: 'animated faster flipInY',
+        exits: 'animated faster flipOutY'
       },
       tabList: [
         {

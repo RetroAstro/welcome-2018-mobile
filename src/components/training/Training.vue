@@ -38,8 +38,8 @@ export default {
       currentName: 'train_tips',
       currentComponent: 'TipsBox',
       animate: {
-          entrance: 'animated fast rollIn',
-          exits: 'animated fast rollOut'
+        entrance: 'animated fast rollIn',
+        exits: 'animated fast rollOut'
       },
       tabList: [
         {
