@@ -235,9 +235,9 @@ export default {
                 justify-content center
                 align-items flex-end
                 padding-right rem(19)
-                padding-bottom rem(1.5)
+                padding-bottom rem(2.2)
                 .map-wrap {
-                    width rem(322)
+                    width rem(322.6)
                     height rem(181)
                     & > img {
                         width 100%
