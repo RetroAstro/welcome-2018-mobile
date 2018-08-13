@@ -1,6 +1,6 @@
 <template>
     <ul class="count-inner flex-between">
-        <li v-for="(time, name, index) in timeList" :key="index" class="time " :class="name">
+        <li v-for="(time, name, index) in timeList" :key="index" class="time flex-center bg-cover-all" :class="name">
             <span>{{time[0]}}</span>
             <span>{{time[1]}}</span>
         </li>
@@ -67,22 +67,10 @@ export default {
     height 100%
     transform translate(rem(-4), rem(-2))
     .time {
-        font-size rem(10)
+        font-size rem(12)
         font-family "TTChaoHeiJ"
         font-weight bolder
         color #961725
-    }
-    .day {
-        transform translate(rem(0), rem(2))
-    }
-    .hour {
-        transform translate(rem(0), rem(-1))
-    }
-    .minute {
-        transform translate(rem(0), rem(-1))
-    }
-    .second {
-        transform translate(rem(-2), rem(1))
     }
 }
 </style>

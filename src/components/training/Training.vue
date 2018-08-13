@@ -18,7 +18,6 @@
 
 <script>
 
-import Tab from '@common/Tab.vue'
 import TipsBox from './TipsBox.vue'
 import PastYearBox from './PastYearBox.vue'
 import ContentBox from './ContentBox.vue'
@@ -26,7 +25,6 @@ import RuleBox from './RuleBox.vue'
 
 export default {
   components: {
-    Tab,
     TipsBox,
     PastYearBox,
     ContentBox,
@@ -38,8 +36,8 @@ export default {
       currentName: 'train_tips',
       currentComponent: 'TipsBox',
       animate: {
-        entrance: 'animated fast rollIn',
-        exits: 'animated fast rollOut'
+        entrance: 'animated faster rollIn',
+        exits: 'animated faster rollOut'
       },
       tabList: [
         {
@@ -91,7 +89,7 @@ export default {
             width rem(345)
             height rem(772)
             background-image url('../../assets/tip_box.png')
-            transform translateX(rem(2))
+            transform translateX(rem(5))
             & >>> .training-box {
                 width rem(276)
                 height rem(710)

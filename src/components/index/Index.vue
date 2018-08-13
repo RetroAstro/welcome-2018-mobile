@@ -1,6 +1,6 @@
 <template>
     <div class="index-wrapper">
-        <div class="topic-wrapper">
+        <div class="topic-wrapper" ref="wrapper">
             <div class="pipe-one bg-cover-all"></div>
             <div class="pipe-two bg-cover-all"></div>
             <div class="pipe-three bg-cover-all"></div>
@@ -132,6 +132,10 @@ export default {
   created () {
     setTimeout(() => {
       document.querySelector('.loading').outerHTML = ''
+      this.$refs.wrapper.classList.add('animated', 'bounceIn')
+      setTimeout(() => {
+        this.$refs.wrapper.classList.remove('animated', 'bounceIn')
+      }, 2000)
     }, 1000)
   }
 }

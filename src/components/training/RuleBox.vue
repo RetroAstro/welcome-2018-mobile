@@ -11,13 +11,11 @@
 
 <script>
 
-import Tab from '@common/Tab.vue'
 import CompRuleAssign from './CompRuleAssign.vue'
 import CompRuleSchedule from './CompRuleSchedule.vue'
 
 export default {
   components: {
-    Tab,
     CompRuleAssign,
     CompRuleSchedule
   },

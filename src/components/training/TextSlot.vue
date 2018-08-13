@@ -4,13 +4,13 @@
             <div class="text-title">
                 <div class="diet bg-cover-all"></div>
             </div>
-            <div class="text-content bg-cover-all"><slot name="text1"></slot></div>
+            <div class="text-content"><slot name="text1"></slot></div>
         </div>
         <div class="text-box two">
             <div class="text-title">
                 <div class="unburn bg-cover-all"></div>
             </div>
-            <div class="text-content bg-cover-all"><slot name="text2"></slot></div>
+            <div class="text-content"><slot name="text2"></slot></div>
         </div>
     </div>
 </template>

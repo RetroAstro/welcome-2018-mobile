@@ -4,9 +4,9 @@
             <ul class="nav-inner flex-between">
                 <li 
                 v-for="(tab, index) in tabList" :key="index"
-                :class="[tab.name, 'bg-cover-all']"
+                :class="[{ tada: currentName === tab.name }, tab.name, 'bg-cover-all', 'animated']"
                 :style="{ backgroundImage: currentName === tab.name ? `url('${require(`../assets/${tab.name}_active.png`)}')` : `url('${require(`../assets/${tab.name}.png`)}')` }"
-                @click="handleSwitch(tab)"
+                @touchstart="handleSwitch(tab)"
                 ></li>
             </ul>
         </div>

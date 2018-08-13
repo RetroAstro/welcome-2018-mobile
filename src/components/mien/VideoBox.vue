@@ -1,112 +1,113 @@
 <template>
     <div class="video-box">
-        <div class="video-wrap bg-cover-all flex-center">
-            <div class="inner" @click="handlePlay">
-                <video class="video" ref="video">
-                    <source :src="videoSrc" type="video/ogg"/>
-                </video>
-                <div class="bg-cover-all translate-center" :class="{pause: paused}"></div>
-            </div>         
+        <div class="video-wrap">
+            <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut">
+                <ul class="video-list flex-around" v-show="show">
+                    <li 
+                    v-for="(item, index) in videoList[currentIndex]" :key="index"
+                    :class="['video-border', 'bg-cover-all', 'flex-center']"
+                    :data-text="item.text"
+                    @click="handlePlay"
+                    >
+                    <div class="video-inside">
+                        <video :src="item.src" class="video"></video>
+                    </div>
+                    <i :class="[{ play: currentSrc === item.src },'pause', 'bg-cover-all', 'translate-center']"></i>
+                    </li>
+                </ul>
+            </transition>
         </div>
-        <div class="slide-box">
-            <div class="left bg-cover-all animated flash infinite"></div>
-            <div class="right bg-cover-all animated flash infinite"></div>
-            <div class="slider">
-                <div class="slide-wrap" v-touch:swipe="swipeHandler">
-                    <ul class="slide-inner flex-around" :style="{marginLeft: `-${slideIndex}00%`}">
-                        <li v-for="(boxes, index) in boxList" :key="index" class="slide-section flex-around">
-                            <div 
-                            class="slide-btn bg-cover-all flex-center" 
-                            v-for="(box, index) in boxes" :key="index"
-                            :data-name="box.text"
-                            @click="changeVideo(box.src)"
-                            >{{box.text}}</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="switch-box flex-around">
+            <div class="left bg-cover-all" @click="handleSwitch(-1)"></div>
+            <div class="right bg-cover-all" @click="handleSwitch(1)"></div>
         </div>
     </div>
 </template>
 
 <script>
+
 export default {
   data () {
     return {
-      slideIndex: 0,
-      videoSrc: 'http://www.w3school.com.cn/i/movie.ogg',
-      paused: true,
-      items: [
-        'team',
-        'video',
-        'presenter',
-        'scene'
-      ],
-      boxList: [
+      currentSrc: '',
+      show: true,
+      player: null,
+      currentIndex: 0,
+      videoList: [
         [
           {
-            text: '1',
+            text: '舌尖上的重邮 第一集',
             src: 'http://www.w3school.com.cn/i/movie.ogg'
           },
           {
-            text: '2',
-            src: ''
+            text: '红岩网校工作站 2017 招新视频',
+            src: 'http://ugcydzd.qq.com/uwMRJfz-r5jAYaQXGdGnC2_ppdhgmrDlPaRvaV7F2Ic/o05597e7vw2.mp4?sdtfrom=v1010&guid=1d5ab796e470a392ff837b43ce9e7ae9&vkey=A4D2DBD9B5CB0A36C227C96C0E2D8589D62BD146D466E0C40DCB146DAE35401321B2ACCFEA2E1A221F23B122385FE2507C62624BAE55A1671A75955B04343B381E7240B727FC1B57EE3C3869532051E09B7F760F38E47941E945EDD49F11CBBEC2AD1466DA01F8D4C2605007775A52473BD48CB9DF22EB14'
           },
           {
-            text: '3',
-            src: ''
+            text: '舌尖上的重邮 第二集',
+            src: 'http://www.w3school.com.cn/i/movie.ogg'
           }
         ],
         [
           {
-            text: '',
-            src: ''
+            text: '重邮2017军训汇演',
+            src: 'http://www.w3school.com.cn/i/movie.ogg'
           },
           {
-            text: '',
-            src: ''
+            text: '《春风十里》重邮风光',
+            src: 'http://www.w3school.com.cn/i/movie.ogg'
           },
           {
-            text: '',
-            src: ''
+            text: '航拍重邮',
+            src: 'http://www.w3school.com.cn/i/movie.ogg'
           }
         ],
         [
           {
-            text: '',
-            src: ''
+            text: '666',
+            src: 'http://www.w3school.com.cn/i/movie.ogg'
           },
           {
-            text: '',
-            src: ''
+            text: '233',
+            src: 'http://www.w3school.com.cn/i/movie.ogg'
           },
           {
-            text: '',
-            src: ''
+            text: '789',
+            src: 'http://www.w3school.com.cn/i/movie.ogg'
           }
         ]
       ]
     }
   },
-  created () {
-    setTimeout(() => {
-      document.querySelector('.loading').outerHTML = ''
-    }, 1000)
+  mounted () {
+    window.onresize = function () {
+      if (this.player) {
+        this.player.pause()
+        this.currentSrc = ''
+      }
+    }
   },
   methods: {
-    swipeHandler (direction) {
-      direction === 'left' ? this.slideIndex++ : this.slideIndex--
-      this.slideIndex = this.slideIndex <= 0 ? 0 : this.slideIndex >= 2 ? 2 : this.slideIndex
+    handleSwitch (num) {
+      this.show = false
+      setTimeout(() => {
+        this.currentIndex += num
+        this.currentIndex = this.currentIndex <= 0 ? 0 : this.currentIndex >= 2 ? 2 : this.currentIndex
+        this.show = true
+      }, 1000)
     },
-    handlePlay () {
-      var player = this.$refs.video
-      player.play()
-      player.requestFullscreen ? player.requestFullscreen() : player.webkitRequestFullScreen()
-      this.paused = false
-    },
-    changeVideo (src) {
-      this.videoSrc = src
-      this.paused = true
+    handlePlay (e) {
+      this.player = findParent(e.target, 'video-border').querySelector('video')
+      this.currentSrc = this.player.src
+      this.player.play()
+      this.player.requestFullscreen ? this.player.requestFullscreen() : this.player.webkitRequestFullScreen()
+      function findParent (ele, sle) {
+        var parent = ele.parentNode
+        while (!parent.classList.contains(sle)) {
+          parent = parent.parentNode
+        }
+        return parent
+      }
     }
   }
 }
@@ -115,100 +116,69 @@ export default {
 
 <style lang="stylus" scoped>
 .video-box {
-    width 100%
+    width 80%
+    height rem(650)
     .video-wrap {
-        margin 0 auto
-        margin-top rem(30)
-        transform translateX(rem(-6))
-        width 80%
-        height rem(150)
-        background-image url('../../assets/video_wrap.png')
+        height rem(600)
         position relative
-        .inner {
-            width 96%
-            height rem(139)
-            position relative
-            .video {
-                width 100%
-                height 100%
-                object-fit fill
+        .video-list {
+            flex-direction column
+            height 100%
+            .video-border {
+                transform translateY(rem(-10))
+                width rem(276)
+                height rem(148)
+                background-image url('../../assets/video_wrap.png')
+                position relative
+                .video-inside {
+                    width 95.5%
+                    height 92.5%
+                    position relative
+                    .video {
+                        width 100%
+                        height 100%
+                        object-fit fill
+                    }
+                }
+                .pause {
+                    display inline-block
+                    width rem(50)
+                    height rem(50)
+                    background-image url('../../assets/play.png')
+                }
             }
-            .pause {
-                width rem(50)
-                height rem(50)
-                background-image url('../../assets/play.png')
+            .video-border::after {
+                position absolute
+                left 0
+                bottom rem(-40)
+                display block
+                content attr(data-text)
+                width rem(276)
+                height rem(30)
+                background #d6faff
+                border-radius 6px
+                border 1.5px solid #432d94
+                display flex
+                align-items center 
+                justify-content center
+                font-size 14px
+                color #432d94
             }
         }
     }
-    .slide-box {
+    .switch-box {
         width 100%
-        height rem(80)
-        position relative
+        height rem(50)
+        transform translateY(rem(12))
+        & > div {
+            width rem(35)
+            height rem(35)
+        }
         .left {
-            width rem(25)
-            height rem(25)
-            position absolute
-            left 8%
-            top 50%
-            transform translateY(-50%)
             background-image url('../../assets/left_arrow.png')
-            animation-duration 8s
         }
         .right {
-            width rem(25)
-            height rem(25)
-            position absolute
-            right 12%
-            top 50%
-            transform translateY(-50%)
             background-image url('../../assets/right_arrow.png')
-            animation-duration 8s
-        }
-        .slide-wrap {
-            margin 0 auto
-            width 70%
-            height rem(80)
-            transform translateX(rem(-7))
-            overflow hidden
-            .slide-inner {
-                width 300%
-                height rem(80)
-                margin-left 0
-                transition all .3s ease-in-out
-                .slide-section {
-                    width 100%
-                    height rem(80)
-                    .slide-btn {
-                        width rem(65)
-                        height rem(42)
-                        background-image url('../../assets/slide_box1.png')
-                        position relative
-                        font-size 14px
-                        color #442d94
-                    }
-                    .slide-btn::after {
-                        visibility hidden
-                        content attr(data-name)
-                        position absolute
-                        top 0
-                        left 0
-                        right 0
-                        bottom 0
-                        background-image url('../../assets/slide_box2.png')
-                        background-size 100% 100%
-                        background-repeat no-repeat
-                        background-position center center
-                        font-size 14px
-                        color #fff
-                        display flex
-                        align-items center
-                        justify-content center
-                    }
-                    .slide-btn.active::after {
-                        visibility visible
-                    }
-                }
-            }
         }
     }
 }

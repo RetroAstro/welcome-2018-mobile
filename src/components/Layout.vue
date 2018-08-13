@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <comp-header></comp-header>
-        <transition mode="out-in" enter-active-class="animated fast bounceIn" leave-active-class="animated fast bounceOut">
+        <transition mode="out-in" enter-active-class="animated faster bounceIn" leave-active-class="animated faster bounceOut">
             <keep-alive>
                 <router-view></router-view>            
             </keep-alive>

@@ -5,10 +5,18 @@
                 <li 
                 v-for="(item, index) in items" 
                 :key="index"
-                :class="{active: item.name === currentName}" 
-                class="btn bg-cover-all flex-center"
+                :class="[
+                {
+                    active: item.name === currentName
+                },
+                {
+                    bounceIn: item.name === currentName 
+                },
+                'btn', 'bg-cover-all', 'flex-center', 'animated', 'slow'
+                ]" 
+                class=""
                 :data-name="item.name"
-                @click="handleSwitch(item)"
+                @touchstart="handleSwitch(item)"
                 >
                 <span>{{item.name}}</span>
                 </li>
@@ -18,12 +26,13 @@
             <div class="hand bg-cover-all"></div>
             <div class="coin bg-cover-all"></div>
             <div class="coin-box bg-cover-all"></div>
-            <div class="train bg-cover-all animated slower bounceIn delay-1s"></div>
+            <div class="train bg-cover-all animated pulse infinite"></div>
             <div class="go bg-cover-all animated slower swing infinite delay-1s"></div>
             <div class="flag bg-cover-all"></div>
             <div class="right-pipe bg-cover-all"></div>
             <div class="left-pipe bg-cover-all"></div>
-            <div class="countdown bg-cover-all">
+            <div class="time-text bg-cover-all animated flash infinite"></div>
+            <div class="countdown">
                 <div class="count-wrap">
                     <count-down></count-down>
                 </div>
@@ -182,6 +191,7 @@ export default {
             width rem(44)
             height rem(30)
             background-image url('../../assets/train.png')
+            animation-duration 2s
         }
         .go {
             position absolute
@@ -217,18 +227,59 @@ export default {
             background-image url('../../assets/left_pipe.png')
             z-index 6
         }
+        .time-text {
+            position absolute
+            top rem(169)
+            left rem(128)
+            width rem(120)
+            height rem(22)
+            background-image url('../../assets/time_text.png')
+            animation-duration 6s
+        }
         .countdown {
             position absolute
             top rem(138)
             left rem(116)
             width rem(146)
-            height rem(30)
-            background-image url('../../assets/countdown.png')
+            height rem(18)
             .count-wrap {
                 width 86%
                 height rem(30)
                 margin 0 auto 
                 position relative
+                & >>> .count-inner {
+                    .time {
+                        width rem(33)
+                        height rem(25)
+                    }
+                    .day {
+                        transform translate(rem(-4), rem(3))
+                        & > span {
+                            transform translate(rem(-1), rem(-2))
+                        }
+                        background-image url('../../assets/time_wrap1.png')
+                    }
+                    .hour {
+                        & > span {
+                            transform translate(rem(-1), rem(-2))
+                        }
+                        background-image url('../../assets/time_wrap2.png')
+                    }
+                    .minute {
+                        transform translate(rem(6), rem(0))
+                        & > span {
+                            transform translate(rem(0), rem(-2))
+                        }
+                        background-image url('../../assets/time_wrap3.png')
+                    }
+                    .second {
+                        transform translate(rem(10), rem(3))
+                        & > span {
+                            transform translate(rem(0), rem(-2))
+                        }
+                        background-image url('../../assets/time_wrap4.png')
+                    }
+                }
             }
         }
     }

@@ -18,7 +18,6 @@
 
 <script>
 
-import Tab from '@common/Tab.vue'
 import TeamBox from './TeamBox.vue'
 import VideoBox from './VideoBox.vue'
 import RepresenterBox from './RepresenterBox.vue'
@@ -26,7 +25,6 @@ import SceneBox from './SceneBox.vue'
 
 export default {
   components: {
-    Tab,
     TeamBox,
     VideoBox,
     RepresenterBox,
@@ -38,8 +36,8 @@ export default {
       currentName: 'mien_video',
       currentComponent: 'VideoBox',
       animate: {
-        entrance: 'animated fast bounceIn',
-        exits: 'animated fast bounceOut'
+        entrance: 'animated faster rollIn',
+        exits: 'animated faster rollOut'
       },
       tabList: [
         {
@@ -74,7 +72,7 @@ export default {
 .mien-wrapper {
     width 100%
     margin-top rem(70)
-    height rem(450)
+    height rem(880)
     position relative
     z-index 20
     .mien-box {
@@ -88,16 +86,20 @@ export default {
             margin-bottom rem(6)
         }
         .content {
-            width rem(355)
-            height rem(340)
-            background-image url('../../assets/video_box.png')
+            width rem(345)
+            height rem(772)
+            background-image url('../../assets/tip_box.png')
+            transform translateX(rem(5))
             & >>> .mien-video-box {
                 flex-direction column
-                transform translateY(rem(10))
-                .nav {
+                transform translateY(rem(35))
+                height rem(700)
+                & > div {
+                    transform translate(rem(-7), rem(0))
+                }
+                & > .nav {
                     width 80%
                     height rem(50)
-                    transform translate(rem(-6), rem(20))
                     .nav-inner {
                         width 100%
                         & > li {
@@ -108,17 +110,6 @@ export default {
                 }
             }
         }
-        // .menu-box {
-        //     width 80%
-        //     height rem(60)
-        //     margin 0 auto
-        //     padding-top rem(55)
-        //     transform translateX(rem(-6))
-        //     .menu-btn {
-        //         width rem(64)
-        //         height rem(35)
-        //     }
-        // }
     }
 }
 </style>
