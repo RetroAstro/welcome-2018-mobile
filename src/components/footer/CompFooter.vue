@@ -42,7 +42,7 @@ export default {
             display flex
             justify-content center
             color #fff
-            font-size 13px
+            font-size rem(13)
             & > li {
                 margin-left rem(4)
             }
@@ -54,7 +54,7 @@ export default {
                 height rem(20)
                 line-height rem(20)
                 color #fff
-                font-size 10px
+                font-size rem(10)
                 letter-spacing .5px
             }   
         }

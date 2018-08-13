@@ -33,8 +33,8 @@ export default {
   data () {
     return {
       box: 'mien-video-box',
-      currentName: 'mien_video',
-      currentComponent: 'VideoBox',
+      currentName: 'mien_team',
+      currentComponent: 'TeamBox',
       animate: {
         entrance: 'animated faster rollIn',
         exits: 'animated faster rollOut'

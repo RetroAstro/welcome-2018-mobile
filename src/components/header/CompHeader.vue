@@ -1,26 +1,30 @@
 <template>
     <header class="header">
         <div class="nav">
-            <ul class="btns-box flex-between animated bounceIn delay-1s">
-                <li 
-                v-for="(item, index) in items" 
-                :key="index"
-                :class="[
-                {
-                    active: item.name === currentName
-                },
-                {
-                    bounceIn: item.name === currentName 
-                },
-                'btn', 'bg-cover-all', 'flex-center', 'animated', 'slow'
-                ]" 
-                class=""
-                :data-name="item.name"
-                @touchstart="handleSwitch(item)"
-                >
-                <span>{{item.name}}</span>
-                </li>
-            </ul>
+            <div class="nav-inner" ref="scroll">
+                <div class="scroll-wrap" ref="btns">
+                    <ul class="btns-box animated flex-between bounceIn delay-1s">
+                        <li 
+                        v-for="(item, index) in items" 
+                        :key="index"
+                        :class="[
+                        {
+                            active: item.name === currentName
+                        },
+                        {
+                            bounceIn: item.name === currentName 
+                        },
+                        'btn', 'bg-cover-all', 'flex-center', 'animated', 'slow'
+                        ]" 
+                        class=""
+                        :data-name="item.name"
+                        @click="handleSwitch(item)"
+                        >
+                        <span>{{item.name}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="robot-box bg-cover-all">
             <div class="hand bg-cover-all"></div>
@@ -44,6 +48,8 @@
 <script>
 
 import CountDown from './CountDown.vue'
+
+import BScroll from 'better-scroll'
 
 export default {
   components: {
@@ -72,6 +78,14 @@ export default {
         {
           name: '活动',
           path: 'activity'
+        },
+        {
+          name: '军训',
+          path: 'training'
+        },
+        {
+          name: '风采',
+          path: 'mien'
         }
       ],
       timeList: {
@@ -83,7 +97,24 @@ export default {
       timer: null
     }
   },
+  mounted () {
+    this.$nextTick(() => {
+      this.initMenu()
+    })
+  },
   methods: {
+    initMenu () {
+      this.$nextTick(() => {
+        if (!this.scroll) {
+          this.scroll = new BScroll(this.$refs.scroll, {
+            scrollX: true,
+            eventPassthrough: 'vertical'
+          })
+        } else {
+          this.scroll.refresh()
+        }
+      })
+    },
     handleSwitch (item) {
       this.currentName = item.name
       this.$router.push({path: `/${item.path}`})
@@ -106,47 +137,57 @@ export default {
         background-color #9be9fe
         border-bottom 1.5px solid #33177b
         z-index 100
-        .btns-box {
-            margin 0 auto
-            width 92%
+        .nav-inner {
+            width rem(334)
             height rem(50)
-            .btn {
-                width rem(53)
-                height rem(32)
-                background-image url('../../assets/header_btn2.png')
+            margin 0 auto
+            overflow hidden
+            .scroll-wrap {
+                width rem(473)
+                height rem(50)
                 position relative
-                & > span {
-                    font-size rem(18)
-                    color #fff
-                    text-shadow rem(1.5) rem(1.5) #32167a
-                    transform translate(rem(-3), rem(-3))
+                .btns-box {
+                    width 100%
+                    height 100%
+                    .btn {
+                        width rem(53)
+                        height rem(32)
+                        position relative
+                        background-image url('../../assets/header_btn2.png')
+                        & > span {
+                            font-size rem(18)
+                            color #fff
+                            text-shadow rem(1.5) rem(1.5) #32167a
+                            transform translate(rem(-3), rem(-3))
+                        }
+                    }
+                    .btn::after {
+                        visibility hidden
+                        display block
+                        content attr(data-name)
+                        position absolute
+                        top 0
+                        left 0
+                        right 0
+                        bottom 0
+                        background-image url('../../assets/header_btn1.png')
+                        background-size 100% 100%
+                        background-repeat no-repeat
+                        background-position center center
+                        z-index 200
+                        font-size rem(18)
+                        color #fff199
+                        text-shadow rem(1.5) rem(1.5) #32167a
+                        display flex
+                        align-items center
+                        justify-content center
+                        padding-right rem(6)
+                        padding-bottom rem(6)
+                    }
+                    .btn.active::after {
+                        visibility visible
+                    }
                 }
-            }
-            .btn::after {
-                visibility hidden
-                display block
-                content attr(data-name)
-                position absolute
-                top 0
-                left 0
-                right 0
-                bottom 0
-                background-image url('../../assets/header_btn1.png')
-                background-size 100% 100%
-                background-repeat no-repeat
-                background-position center center
-                z-index 200
-                font-size rem(18)
-                color #fff199
-                text-shadow rem(1.5) rem(1.5) #32167a
-                display flex
-                align-items center
-                justify-content center
-                padding-right rem(6)
-                padding-bottom rem(6)
-            }
-            .btn.active::after {
-                visibility visible
             }
         }
     }

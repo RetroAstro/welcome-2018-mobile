@@ -123,7 +123,7 @@ export default {
             height 100%
             background-color #d5fbff
             color #645bac
-            font-size 13px
+            font-size rem(13)
             text-align center
         }
     }
@@ -153,7 +153,7 @@ export default {
                 display flex
                 align-items center
                 justify-content flex-start
-                font-size 13px
+                font-size rem(13)
                 color #645bac
             }
         }

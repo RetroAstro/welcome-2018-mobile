@@ -6,26 +6,15 @@ import App from './App.vue'
 
 import router from './router/router'
 
-import VuePreview from 'vue-preview'
-
-// import Vue2TouchEvents from 'vue2-touch-events'
-
 import Tab from './common/Tab.vue'
+
+import preview from 'vue-photo-preview'
 
 Vue.component('tab', Tab)
 
-Vue.use(VuePreview, {
-  shareEl: false,
+Vue.use(preview, {
   bgOpacity: 0.3
 })
-
-// Vue.use(Vue2TouchEvents, {
-//   disableClick: false,
-//   touchClass: '',
-//   tapTolerance: 10,
-//   swipeTolerance: 30,
-//   longTapTimeInterval: 400
-// })
 
 new Vue({
   router,

@@ -9,12 +9,18 @@
                 </div>
             </div>
         </div>
+        <pagination></pagination>
     </div>
 </template>
 
 <script>
 
+import Pagination from '@common/Pagination.vue'
+
 export default {
+  components: {
+    Pagination
+  },
   data () {
     return {
       items: [
@@ -44,7 +50,7 @@ export default {
     position relative
     .text-box {
         width rem(250)
-        height rem(515)
+        height rem(500)
         flex-direction column
         & > div {
             width 100%
@@ -81,9 +87,9 @@ export default {
             }
             .text-content {
                 width 100%
-                height rem(230)
+                height rem(220)
                 text-align left 
-                font-size 13px
+                font-size rem(13)
                 color #432c93
                 letter-spacing .5px
                 line-height rem(17)
@@ -97,6 +103,9 @@ export default {
                     background-image url('../../assets/dashline.png')
                 }
             }
+        }
+        .text-inner:last-child {
+            padding-top rem(12)
         }
     }
 }

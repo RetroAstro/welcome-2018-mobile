@@ -103,7 +103,7 @@ export default {
                 width 100%
                 height rem(126)
                 text-align left 
-                font-size 13px
+                font-size rem(13)
                 color #432c93
                 letter-spacing .5px
                 line-height rem(17)

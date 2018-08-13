@@ -11,7 +11,9 @@
             <div class="map-box">
                 <div class="title bg-cover-all"></div>
                 <div class="content bg-cover-all">
-                    <vue-preview :slides="slide1" class="map"></vue-preview>
+                    <div class="map-wrap">
+                        <img src="../../assets/map.jpg" preview="0">
+                    </div>
                 </div>
             </div>
             <div class="activity-box">
@@ -231,11 +233,16 @@ export default {
                 margin 0 auto
                 display flex
                 justify-content center
-                align-items center
-                .map {
-                    width rem(420)
-                    height rem(150)
-                    margin-left rem(-18)
+                align-items flex-end
+                padding-right rem(19)
+                padding-bottom rem(1.5)
+                .map-wrap {
+                    width rem(322)
+                    height rem(181)
+                    & > img {
+                        width 100%
+                        height 100%
+                    }
                 }
             }
         }
@@ -295,7 +302,7 @@ export default {
                         width 70%
                         margin-top rem(20)
                         height rem(120)
-                        font-size 14px
+                        font-size rem(14)
                         color #606266
                         transform translateX(rem(-2))
                         text-align left
@@ -320,7 +327,7 @@ export default {
                         width 68%
                         margin-top rem(20)
                         height rem(120)
-                        font-size 14px
+                        font-size rem(14)
                         color #606266
                         transform translateX(rem(10))
                         text-align left
@@ -403,7 +410,7 @@ export default {
                     transform translateX(rem(-2))
                     height rem(120)
                     text-align left 
-                    font-size 14px
+                    font-size rem(14)
                     color #606266
                 }
             }

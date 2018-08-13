@@ -41,7 +41,7 @@ export default {
           },
           {
             text: '红岩网校工作站 2017 招新视频',
-            src: 'http://ugcydzd.qq.com/uwMRJfz-r5jAYaQXGdGnC2_ppdhgmrDlPaRvaV7F2Ic/o05597e7vw2.mp4?sdtfrom=v1010&guid=1d5ab796e470a392ff837b43ce9e7ae9&vkey=A4D2DBD9B5CB0A36C227C96C0E2D8589D62BD146D466E0C40DCB146DAE35401321B2ACCFEA2E1A221F23B122385FE2507C62624BAE55A1671A75955B04343B381E7240B727FC1B57EE3C3869532051E09B7F760F38E47941E945EDD49F11CBBEC2AD1466DA01F8D4C2605007775A52473BD48CB9DF22EB14'
+            src: 'http://www.w3school.com.cn/i/movie.ogg'
           },
           {
             text: '舌尖上的重邮 第二集',
@@ -92,7 +92,7 @@ export default {
       this.show = false
       setTimeout(() => {
         this.currentIndex += num
-        this.currentIndex = this.currentIndex <= 0 ? 0 : this.currentIndex >= 2 ? 2 : this.currentIndex
+        this.currentIndex = this.currentIndex < 0 ? 2 : this.currentIndex > 2 ? 0 : this.currentIndex
         this.show = true
       }, 1000)
     },
@@ -161,7 +161,7 @@ export default {
                 display flex
                 align-items center 
                 justify-content center
-                font-size 14px
+                font-size rem(14)
                 color #432d94
             }
         }
