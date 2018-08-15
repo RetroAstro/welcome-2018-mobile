@@ -119,18 +119,6 @@
 <script>
 
 export default {
-  data () {
-    return {
-      slide1: [
-        {
-          src: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_m.jpg',
-          msrc: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_m.jpg',
-          w: 900,
-          h: 600
-        }
-      ]
-    }
-  },
   created () {
     setTimeout(() => {
       document.querySelector('.loading').outerHTML = ''
@@ -235,10 +223,11 @@ export default {
                 justify-content center
                 align-items flex-end
                 padding-right rem(19)
-                padding-bottom rem(2.2)
+                padding-bottom rem(19)
                 .map-wrap {
-                    width rem(322.6)
-                    height rem(181)
+                    width rem(306)
+                    height rem(148)
+                    border rem(1.8) solid #493497
                     & > img {
                         width 100%
                         height 100%
@@ -363,7 +352,7 @@ export default {
                     height rem(100)
                     padding-top rem(80)
                     & img {
-                        animation-duration 6s
+                        animation-duration 3s
                         animation-iteration-count infinite
                     }
                     .training {

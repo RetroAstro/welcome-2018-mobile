@@ -35,6 +35,7 @@ export default {
 .footer {
     position relative
     z-index 20
+    margin-top rem(60)
     .text-box {
         text-align center
         margin-bottom rem(10)

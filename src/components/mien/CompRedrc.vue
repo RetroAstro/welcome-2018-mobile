@@ -1,5 +1,5 @@
 <template>
-    <div class="redrc-box bg-cover-all flex-between">
+    <div class="redrc-box bg-cover-all">
         <div class="text-box flex-between">
             <div v-for="(item, index) in items" :key="index" class="text-inner">
                 <div class="club-title">
@@ -15,12 +15,7 @@
 
 <script>
 
-import Pagination from '@common/Pagination.vue'
-
 export default {
-  components: {
-    Pagination
-  },
   data () {
     return {
       items: [
@@ -30,7 +25,7 @@ export default {
         },
         {
           src: 'redrc_title_sort',
-          text: '【产品策划及运营部】<br/><br/>Ta是用户心理的倾听者，也是产品需求的挖掘者。'
+          text: '【产品策划及运营部】<br/>'
         }
       ]
     }
@@ -41,16 +36,14 @@ export default {
 <style lang="stylus" scoped>
 .redrc-box {
     width 100%
-    height rem(590)
-    transform translateY(rem(8))
-    background-image url('../../assets/bg1.png')
-    flex-direction column
-    padding-top rem(30)
-    padding-bottom rem(60)
+    background-image url('../../assets/bg2.png')
     position relative
+    height rem(405)
+    padding-left rem(25)
+    padding-top rem(15)
+    padding-right rem(15)
     .text-box {
-        width rem(250)
-        height rem(500)
+        width 100%
         flex-direction column
         & > div {
             width 100%
@@ -58,13 +51,14 @@ export default {
         }
         .text-inner {
             position relative
+            margin-bottom rem(7)
             .club-title {
                 width 100%
-                height rem(30)
                 display flex
                 justify-content flex-start
-                padding-left rem(15)
+                margin-bottom rem(6)
                 .title {
+                    width rem(80)
                     height rem(18)
                     &::before {
                         display block
@@ -87,25 +81,74 @@ export default {
             }
             .text-content {
                 width 100%
-                height rem(220)
                 text-align left 
                 font-size rem(13)
                 color #432c93
                 letter-spacing .5px
                 line-height rem(17)
                 position relative
-                .dashline {
-                    position absolute
-                    bottom rem(30)
-                    left 0
-                    width 100%
-                    height rem(2)
-                    background-image url('../../assets/dashline.png')
-                }
             }
         }
-        .text-inner:last-child {
-            padding-top rem(12)
+    }
+    & >>> .page-wrap {
+        position absolute
+        bottom rem(10)
+        left 0
+        width 100%
+        height rem(50)
+        padding-top rem(12)
+        .left {
+            position absolute
+            top 50%
+            transform translateY(-45%)
+            width rem(40)
+            height rem(40)
+            left rem(15)
+            & > span {
+                display block
+                width rem(15)
+                height rem(25)
+                background-image url('../../assets/left_arrow.png')
+            }
+        }
+        .right {
+            position absolute
+            top 50%
+            right rem(15)
+            transform translateY(-45%)
+            width rem(40)
+            height rem(40)
+            & > span {
+                display block
+                width rem(15)
+                height rem(25)
+                background-image url('../../assets/right_arrow.png')
+            }
+        }
+        .inner {
+            margin 0 auto
+            width rem(160)
+            height rem(32)
+            overflow hidden
+            display flex
+            align-items flex-start
+            flex-wrap wrap
+            & > li {
+            width rem(32)
+            height rem(32)
+            transition transform .3s ease-in-out
+            & > span {
+                width rem(28)
+                height rem(28)
+                border-radius 50%
+                font-size rem(16)
+                color #432c93
+            }
+            &.active > span {
+                background #55acee
+                color #fff
+            }
+            }
         }
     }
 }

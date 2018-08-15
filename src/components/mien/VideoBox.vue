@@ -1,25 +1,26 @@
 <template>
-    <div class="video-box">
-        <div class="video-wrap">
-            <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut">
-                <ul class="video-list flex-around" v-show="show">
-                    <li 
-                    v-for="(item, index) in videoList[currentIndex]" :key="index"
-                    :class="['video-border', 'bg-cover-all', 'flex-center']"
-                    :data-text="item.text"
-                    @click="handlePlay"
-                    >
-                    <div class="video-inside">
-                        <video :src="item.src" class="video"></video>
-                    </div>
-                    <i :class="[{ play: currentSrc === item.src },'pause', 'bg-cover-all', 'translate-center']"></i>
+    <div class="content-box bg-cover-all">
+        <div class="video-box bg-cover-all flex-center">
+            <div class="video-wrap" @click="handlePlay">
+                <video preload="preload" ref="video" style="width:100%;height:100%;object-fit:fill;" :src="currentSrc"></video>
+                <div class="video-grey translate-center">
+                    <div class="pause bg-cover-all translate-center"></div>
+                </div>
+            </div>
+        </div>
+        <div class="slider">
+            <div class="video-menu-wrap">
+                <ul class="video-menu" :style="{marginLeft: `-${currentIndex}00%`}">
+                    <li v-for="(item, index) in items" :key="index" class="video-title">
+                        <div 
+                        v-for="(video, index) in item" :key="index" 
+                        :class="[{active: currentSrc === video.src }, 'video-text','flex-center']" 
+                        @click="currentSrc = video.src">{{video.name}}</div>
                     </li>
                 </ul>
-            </transition>
-        </div>
-        <div class="switch-box flex-around">
-            <div class="left bg-cover-all" @click="handleSwitch(-1)"></div>
-            <div class="right bg-cover-all" @click="handleSwitch(1)"></div>
+            </div>
+            <div class="left bg-cover-all flex-center" @click="handleClick(-1)"><span class="bg-cover-all"></span></div>
+            <div class="right bg-cover-all flex-center" @click="handleClick(1)"><span class="bg-cover-all"></span></div>
         </div>
     </div>
 </template>
@@ -29,85 +30,65 @@
 export default {
   data () {
     return {
-      currentSrc: '',
-      show: true,
-      player: null,
       currentIndex: 0,
-      videoList: [
+      player: null,
+      currentSrc: 'http://220.170.49.117/6/r/i/x/w/rixwapisvowouhufsoimbecalgvxsq/hc.yinyuetai.com/F2B4016449734C6683C1D2CF0B462D60.mp4?sc=54685f968f28467e&br=782&vid=3240325&aid=215&area=ML&vst=3',
+      items: [
         [
           {
-            text: '舌尖上的重邮 第一集',
-            src: 'http://www.w3school.com.cn/i/movie.ogg'
+            name: '1',
+            src: 'a'
           },
           {
-            text: '红岩网校工作站 2017 招新视频',
-            src: 'http://www.w3school.com.cn/i/movie.ogg'
+            name: '2',
+            src: 'http://220.170.49.117/6/r/i/x/w/rixwapisvowouhufsoimbecalgvxsq/hc.yinyuetai.com/F2B4016449734C6683C1D2CF0B462D60.mp4?sc=54685f968f28467e&br=782&vid=3240325&aid=215&area=ML&vst=3'
           },
           {
-            text: '舌尖上的重邮 第二集',
-            src: 'http://www.w3school.com.cn/i/movie.ogg'
-          }
+            name: '3',
+            src: 'b'
+          },
         ],
         [
           {
-            text: '重邮2017军训汇演',
-            src: 'http://www.w3school.com.cn/i/movie.ogg'
+            name: '4',
+            src: 'c'
           },
           {
-            text: '《春风十里》重邮风光',
-            src: 'http://www.w3school.com.cn/i/movie.ogg'
+            name: '5',
+            src: 'd'
           },
           {
-            text: '航拍重邮',
-            src: 'http://www.w3school.com.cn/i/movie.ogg'
-          }
+            name: '6',
+            src: 'e'
+          },
         ],
         [
           {
-            text: '666',
-            src: 'http://www.w3school.com.cn/i/movie.ogg'
+            name: '7',
+            src: 'f'
           },
           {
-            text: '233',
-            src: 'http://www.w3school.com.cn/i/movie.ogg'
+            name: '8',
+            src: 'g'
           },
           {
-            text: '789',
-            src: 'http://www.w3school.com.cn/i/movie.ogg'
-          }
+            name: '9',
+            src: 'h'
+          },
         ]
       ]
     }
   },
-  mounted () {
-    window.onresize = function () {
-      if (this.player) {
-        this.player.pause()
-        this.currentSrc = ''
-      }
-    }
-  },
   methods: {
-    handleSwitch (num) {
-      this.show = false
-      setTimeout(() => {
-        this.currentIndex += num
-        this.currentIndex = this.currentIndex < 0 ? 2 : this.currentIndex > 2 ? 0 : this.currentIndex
-        this.show = true
-      }, 1000)
+    handleClick (num) {
+      this.currentIndex += num
+      this.currentIndex = this.currentIndex < 0 ? 2 : this.currentIndex > 2 ? 0 : this.currentIndex
     },
-    handlePlay (e) {
-      this.player = findParent(e.target, 'video-border').querySelector('video')
+    handlePlay () {
+      this.player = this.$refs.video
       this.currentSrc = this.player.src
       this.player.play()
       this.player.requestFullscreen ? this.player.requestFullscreen() : this.player.webkitRequestFullScreen()
-      function findParent (ele, sle) {
-        var parent = ele.parentNode
-        while (!parent.classList.contains(sle)) {
-          parent = parent.parentNode
-        }
-        return parent
-      }
     }
   }
 }
@@ -115,70 +96,97 @@ export default {
 
 
 <style lang="stylus" scoped>
-.video-box {
-    width 80%
-    height rem(650)
-    .video-wrap {
-        height rem(600)
-        position relative
-        .video-list {
-            flex-direction column
-            height 100%
-            .video-border {
-                transform translateY(rem(-10))
-                width rem(276)
-                height rem(148)
-                background-image url('../../assets/video_wrap.png')
-                position relative
-                .video-inside {
-                    width 95.5%
-                    height 92.5%
-                    position relative
-                    .video {
-                        width 100%
-                        height 100%
-                        object-fit fill
-                    }
-                }
+.content-box {
+    width rem(345)
+    height rem(330)
+    background-image url('../../assets/video_box.png')
+    padding-top rem(95)
+    padding-left rem(29)
+    padding-right rem(40)
+    padding-bottom rem(20)
+    .video-box {
+        width 100%
+        height rem(145)
+        background-image url('../../assets/video_wrap.png')
+        .video-wrap {
+            width 95%
+            height 91%
+            position relative
+            .video-grey {
+                width 100%
+                height 100%
+                z-index 400
+                background-color rgba(0,0,0,.3)
                 .pause {
-                    display inline-block
-                    width rem(50)
-                    height rem(50)
-                    background-image url('../../assets/play.png')
+                    width rem(40)
+                    height rem(40)
+                    background-image url('../../assets/pause.png')
+                    z-index 400
                 }
-            }
-            .video-border::after {
-                position absolute
-                left 0
-                bottom rem(-40)
-                display block
-                content attr(data-text)
-                width rem(276)
-                height rem(30)
-                background #d6faff
-                border-radius 6px
-                border 1.5px solid #432d94
-                display flex
-                align-items center 
-                justify-content center
-                font-size rem(14)
-                color #432d94
             }
         }
     }
-    .switch-box {
+    .slider {
         width 100%
-        height rem(50)
-        transform translateY(rem(12))
-        & > div {
-            width rem(35)
-            height rem(35)
+        height rem(66)
+        position relative
+        .video-menu-wrap {
+            width 82%
+            margin 0 auto
+            height rem(66)
+            overflow hidden
+            position relative
+            .video-menu {
+                transition all .5s ease-in-out
+                width 300%
+                height rem(66)
+                display flex
+                align-items center
+                .video-title {
+                    width 100%
+                    height rem(35)
+                    display flex
+                    justify-content space-between
+                    .video-text {
+                        width rem(70)
+                        height 100%
+                        border-radius rem(4)
+                        border 1.5px solid #463195
+                        background #d5fcfe
+                        color #442d94
+                        font-size rem(14)
+                        &.active {
+                            background-color #559cdd
+                            color #fff
+                        }
+                    } 
+                }
+            }
         }
+
         .left {
-            background-image url('../../assets/left_arrow.png')
+            position absolute
+            top 50%
+            transform translateY(-50%)
+            left 0
+            & > span {
+                display block
+                width rem(12)
+                height rem(22)
+                background-image url('../../assets/left_arrow.png')
+            }
         }
         .right {
-            background-image url('../../assets/right_arrow.png')
+            position absolute
+            top 50%
+            transform translateY(-50%)
+            right 0
+            & > span {
+                display block
+                width rem(12)
+                height rem(22)
+                background-image url('../../assets/right_arrow.png')
+            }
         }
     }
 }

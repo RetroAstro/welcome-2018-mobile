@@ -1,6 +1,6 @@
 <template>
     <div class="club-box bg-cover-all flex-between">
-        <div class="slide-down flex-end">
+        <div class="slide-down ">
             <comp-club-slide></comp-club-slide>
         </div>
         <div class="text-box flex-between">
@@ -10,13 +10,12 @@
                 </div>
                 <div class="text-content">
                     {{item.text}}
-                    <div class="dashline bg-cover-all"></div>
                 </div>
             </div>
         </div>
-        <div class="switch-box flex-around">
-            <div class="left bg-cover-all"></div>
-            <div class="right bg-cover-all"></div>
+        <div class="arrow-wrap flex-around">
+            <div class="left bg-cover-all flex-center"><span class="bg-cover-all"></span></div>
+            <div class="right bg-cover-all flex-center"><span class="bg-cover-all"></span></div>
         </div>
     </div>
 </template>
@@ -53,36 +52,36 @@ export default {
 <style lang="stylus" scoped>
 .club-box {
     width 100%
-    height rem(590)
-    transform translateY(rem(8))
-    background-image url('../../assets/bg1.png')
     flex-direction column
-    padding-top rem(10)
-    padding-bottom rem(60)
     position relative
+    background-image url('../../assets/bg2.png')
+    height rem(405)
+    padding-right rem(20)
+    padding-left rem(30)
+    padding-top rem(10)
     .slide-down {
-        width rem(250)
+        width 100%
         height rem(40)
         display flex
         justify-content flex-end
         align-items center
     }
     .text-box {
-        width rem(250)
-        height rem(468)
+        width 100%
         flex-direction column
+        position relative
         & > div {
             width 100%
             flex 1
+            margin-bottom rem(10)
         }
         .text-inner {
             position relative
             .club-title {
                 width 100%
-                height rem(30)
                 display flex
                 justify-content flex-start
-                padding-left rem(15)
+                margin-bottom rem(6)
                 .title {
                     width rem(80)
                     height rem(18)
@@ -95,47 +94,43 @@ export default {
                         background-size 100% 100%
                         background-repeat no-repeat
                         background-position center center
-                        transform translate(rem(-14), rem(6))
+                        transform translate(rem(-14), rem(5))
                     }
                 }
             }
             .text-content {
                 width 100%
-                height rem(126)
                 text-align left 
-                font-size rem(13)
+                font-size rem(12.5)
                 color #432c93
                 letter-spacing .5px
-                line-height rem(17)
                 position relative
-                padding-top rem(6)
-                .dashline {
-                    position absolute
-                    bottom rem(30)
-                    left 0
-                    width 100%
-                    height rem(2)
-                    background-image url('../../assets/dashline.png')
-                }
             }
         }
     }
-    .switch-box {
+    .arrow-wrap {
         width 100%
-        height rem(50)
-        position absolute
-        padding 0 rem(13)
-        left 0
-        bottom rem(22)
+        height rem(60)
         & > div {
-            width rem(35)
-            height rem(35)
+            width rem(40)
+            height rem(40)
+            transform translateX(rem(-6))
         }
         .left {
-            background-image url('../../assets/left_arrow.png')
+            & > span {
+                display block
+                width rem(15)
+                height rem(25)
+                background-image url('../../assets/left_arrow.png')
+            }
         }
         .right {
-            background-image url('../../assets/right_arrow.png')
+            & > span {
+                display block
+                width rem(15)
+                height rem(25)
+                background-image url('../../assets/right_arrow.png')
+            }
         }
     }
 }

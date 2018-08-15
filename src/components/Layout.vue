@@ -32,6 +32,7 @@ export default {
 .main {
     overflow hidden
     background rgb(67, 182, 237)
+    // transition height 0.6s ease-in-out
 }
 </style>
 

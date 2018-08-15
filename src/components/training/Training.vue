@@ -2,16 +2,15 @@
     <div class="training-wrapper">
         <div class="train-box">
             <div class="title bg-cover-all"></div>
-            <div class="content bg-cover-all flex-center">
-                <tab 
-                :box="box"
-                :tabList="tabList" 
-                :animate="animate" 
-                :currentName="currentName" 
-                @handleSwitch="handleSwitch">
-                    <dynamic-component :is="currentComponent"></dynamic-component>
-                </tab>
-            </div>
+            <tab 
+            :nav="nav"
+            :tabList="tabList" 
+            :currentName="currentName" 
+            @handleSwitch="handleSwitch">
+            </tab>
+            <transition mode="out-in" enter-active-class="animated faster fadeInUp" leave-active-class="animated faster fadeOutDown">
+                <dynamic-component :is="currentComponent"></dynamic-component>   
+            </transition>
         </div>
     </div>
 </template>
@@ -32,13 +31,9 @@ export default {
   },
   data () {
     return {
-      box: 'training-box',
+      nav: 'training-nav',
       currentName: 'train_tips',
       currentComponent: 'TipsBox',
-      animate: {
-        entrance: 'animated faster rollIn',
-        exits: 'animated faster rollOut'
-      },
       tabList: [
         {
           name: 'pastyear',
@@ -72,57 +67,31 @@ export default {
 .training-wrapper {
     width 100%
     margin-top rem(70)
-    height rem(880)
     position relative
     z-index 20
     .train-box {
-        & > div {
-            margin 0 auto
-        }
+        position relative
+        padding-left rem(21)
         .title {
+            margin 0 auto
             width rem(120)
             height rem(48)
             background-image url('../../assets/title_train.png')
             margin-bottom rem(6)
         }
-        .content {
-            width rem(345)
-            height rem(772)
-            background-image url('../../assets/tip_box.png')
-            transform translateX(rem(5))
-            & >>> .training-box {
-                width rem(276)
-                height rem(710)
-                flex-direction column
-                position relative
-                transform translateX(rem(-7))
-                .nav {
-                    width 100%
-                    height rem(50)
-                    .nav-inner {
-                        width 100%
-                        & > li {
-                        width rem(62)
-                        height rem(38)
-                        }
-                    }
-                }
-            }
-            & >>> .rule-box {
-                width rem(276)
-                height rem(650)
-                flex-direction column
-                position relative
-                .nav {
-                    width 100%
-                    height rem(40)
-                    .nav-inner {
-                        width 100%
-                        & > li {
-                        width rem(132)
-                        height rem(25)
-                        }
-                    }
+        & >>> .training-nav {
+            z-index 5000
+            position absolute
+            left 0
+            top rem(90)
+            width 100%
+            height rem(40)
+            .nav-inner {
+                width 74%
+                height rem(50)
+                & > li {
+                    width rem(62)
+                    height rem(38)
                 }
             }
         }

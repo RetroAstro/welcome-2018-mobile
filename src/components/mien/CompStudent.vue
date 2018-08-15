@@ -1,5 +1,5 @@
 <template>
-    <div class="student-box bg-cover-all flex-between">
+    <div class="student-box bg-cover-all">
         <div class="text-box flex-between">
             <div v-for="(item, index) in items" :key="index" :class="['text-inner',item.src]">
                 <div class="club-title">
@@ -7,12 +7,11 @@
                 </div>
                 <div class="text-content" v-html="item.text">
                 </div>
-                <div class="dashline"></div>
             </div>
         </div>
-        <div class="switch-box flex-around">
-            <div class="left bg-cover-all"></div>
-            <div class="right bg-cover-all"></div>
+        <div class="arrow-wrap flex-around">
+            <div class="left bg-cover-all flex-center"><span class="bg-cover-all"></span></div>
+            <div class="right bg-cover-all flex-center"><span class="bg-cover-all"></span></div>
         </div>
     </div>
 </template>
@@ -25,7 +24,7 @@ export default {
       items: [
         {
           src: 'tongxin',
-          text: '畅响室内乐社 &nbsp; &nbsp;科技论文讲习社<br/><br/>CF对外交流协会电子协会 &nbsp; &nbsp;曲艺社<br/><br/>移动互联网创新中心 &nbsp;爱心社 &nbsp;百闻茶道社'
+          text: '畅响室内乐社 &nbsp; &nbsp;科技论文讲习社<br/>CF对外交流协会电子协会 &nbsp; &nbsp;曲艺社<br/>移动互联网创新中心 &nbsp;爱心社 &nbsp;百闻茶道社'
         },
         {
           src: 'jisuanji',
@@ -33,7 +32,7 @@ export default {
         },
         {
           src: 'zidonghua',
-          text: '粤语社 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;桌游协会<br/><br/>创客部落 &nbsp; &nbsp; &nbsp;物联网协会<br/><br/>推理协会 &nbsp; &nbsp; &nbsp; &nbsp;象棋协会 &nbsp; &nbsp; &nbsp; &nbsp;航模协会'
+          text: '粤语社 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;桌游协会<br/>创客部落 &nbsp; &nbsp; &nbsp;物联网协会<br/>推理协会 &nbsp; &nbsp; &nbsp; &nbsp;象棋协会 &nbsp; &nbsp; &nbsp; &nbsp;航模协会'
         }
       ]
     }
@@ -44,29 +43,27 @@ export default {
 <style lang="stylus" scoped>
 .student-box {
     width 100%
-    height rem(590)
-    transform translateY(rem(8))
-    background-image url('../../assets/bg1.png')
-    flex-direction column
-    padding-top rem(30)
-    padding-bottom rem(60)
+    background-image url('../../assets/bg2.png')
     position relative
+    height rem(405)
+    padding-left rem(25)
+    padding-top rem(15)
+    padding-right rem(15)
     .text-box {
-        width rem(250)
-        height rem(500)
+        width 100%
         flex-direction column
+        height rem(315)
         & > div {
             width 100%
             flex 1
         }
         .text-inner {
             position relative
+            margin-bottom rem(10)
             .club-title {
                 width 100%
-                height rem(30)
                 display flex
                 justify-content flex-start
-                padding-left rem(15)
                 .title {
                     width rem(80)
                     height rem(18)
@@ -85,23 +82,17 @@ export default {
             }
             .text-content {
                 width 100%
-                height rem(126)
                 text-align left 
-                font-size rem(13)
+                font-size rem(12.5)
                 color #432c93
                 letter-spacing .5px
-                line-height rem(17)
+                line-height rem(20)
                 position relative
                 padding-top rem(10)
             }
-            .dashline {
-                position absolute
-                bottom rem(20)
-                left 0
-                width 100%
-                height rem(2)
-                background-image url('../../assets/dashline.png')
-            }
+        }
+        .text-inner:last-child {
+            margin-bottom 0
         }
         .tongxin {
             .title {
@@ -112,29 +103,33 @@ export default {
             .title {
                 width rem(150) !important
             }
-            .text-content {
-                line-height rem(25)
-                transform translateY(rem(-10))
-            }
         }
     }
-    .switch-box {
+    .arrow-wrap {
         width 100%
-        height rem(50)
         position absolute
-        padding 0 rem(13)
+        bottom rem(8)
         left 0
-        bottom rem(22)
-        transform translateY(rem(6))
         & > div {
-            width rem(35)
-            height rem(35)
+            width rem(40)
+            height rem(40)
+            transform translateX(rem(-6))
         }
         .left {
-            background-image url('../../assets/left_arrow.png')
+            & > span {
+                display block
+                width rem(15)
+                height rem(25)
+                background-image url('../../assets/left_arrow.png')
+            }
         }
         .right {
-            background-image url('../../assets/right_arrow.png')
+            & > span {
+                display block
+                width rem(15)
+                height rem(25)
+                background-image url('../../assets/right_arrow.png')
+            }
         }
     }
 }

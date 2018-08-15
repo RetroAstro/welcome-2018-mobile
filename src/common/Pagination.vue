@@ -1,6 +1,5 @@
 <template>
     <div class="page-wrap">
-        <span class="left bg-cover-all" @touchstart="prevOrNext(-1)"></span>
         <ul class="inner">
             <li 
             v-for="(item, index) in totalPages" 
@@ -10,7 +9,8 @@
             @touchstart="currentPage = item"
             ><span class="flex-center">{{item}}</span></li>
         </ul>
-        <span class="right bg-cover-all" @touchstart="prevOrNext(1)"></span>   
+        <div class="left bg-cover-all flex-center" @click="prevOrNext(-1)"><span class="bg-cover-all"></span></div>
+        <div class="right bg-cover-all flex-center" @click="prevOrNext(1)"><span class="bg-cover-all"></span></div>
     </div>
 </template>
 
@@ -40,54 +40,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-.page-wrap {
-    position absolute
-    bottom 0
-    left 0
-    width 100%
-    height rem(50)
-    & > span {
-        display inline-block
-        position absolute
-        top 50%
-        transform translateY(-80%)
-        width rem(30)
-        height rem(30)
-    }
-    .left {
-        left rem(20)
-        background-image url('../assets/left_arrow.png')
-    }
-    .right {
-        right rem(20)
-        background-image url('../assets/right_arrow.png')
-    }
-    .inner {
-        margin 0 auto
-        width rem(160)
-        height rem(32)
-        overflow hidden
-        display flex
-        align-items flex-start
-        flex-wrap wrap
-        & > li {
-          width rem(32)
-          height rem(32)
-          transition transform .3s ease-in-out
-          & > span {
-            width rem(28)
-            height rem(28)
-            border-radius 50%
-            font-size rem(16)
-            color #432c93
-          }
-          &.active > span {
-            background #55acee
-            color #fff
-          }
-        }
-    }
-}
-</style>

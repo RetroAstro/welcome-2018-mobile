@@ -6,9 +6,11 @@
             </div>
         </div>
         <div class="option-wrap">
+          <transition enter-active-class="animated faster slideInDown" leave-active-class="animated faster slideOutUp">
             <ul class="option" v-show="showOptions">
                 <li v-for="(item, index) in options" :key="index" @click.prevent="choose(item.value)">{{item.value}}</li>
             </ul>
+          </transition>
         </div>
     </div>
 </template>
@@ -130,7 +132,7 @@ export default {
     .option-wrap {
         position absolute
         left 0
-        top rem(27)
+        top rem(28)
         width rem(110)
         height rem(210)
         z-index 200

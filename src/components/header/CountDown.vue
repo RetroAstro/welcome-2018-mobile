@@ -1,8 +1,8 @@
 <template>
     <ul class="count-inner flex-between">
         <li v-for="(time, name, index) in timeList" :key="index" class="time flex-center bg-cover-all" :class="name">
-            <span>{{time[0]}}</span>
-            <span>{{time[1]}}</span>
+                <span :style="{ transform: `translate(${0.5 / 75}rem, ${time[0] / 75}rem)` }" class="bg-cover-all"></span>
+                <span :style="{ transform: `translate(${0.5 / 75}rem, ${time[1] / 75}rem)` }" class="bg-cover-all"></span>
         </li>
     </ul>
 </template>
@@ -36,6 +36,7 @@ export default {
       var str = '2018/9/14 00:00:00'
       var end = new Date(str).getTime()
       var left = end - now
+      var list = [93.5, 70, 50, 30, 10, -10, -30, -52, -75, -98]
       if (left >= 0) {
         var arr = [
           Math.floor(left / 1000 / 60 / 60 / 24),
@@ -44,8 +45,8 @@ export default {
           Math.floor(left / 1000 % 60)
         ]
         Object.keys(this.timeList).forEach((time, index) => {
-          var double = parseInt(arr[index] / 10)
-          var single = parseInt(arr[index] % 10)
+          var double = list[parseInt(arr[index] / 10)]
+          var single = list[parseInt(arr[index] % 10)]
           this.timeList[time] = [double, single]
         })
       }
@@ -67,10 +68,13 @@ export default {
     height 100%
     transform translate(rem(-4), rem(-2))
     .time {
-        font-size rem(12)
-        font-family "TTChaoHeiJ"
-        font-weight bolder
-        color #961725
+        overflow hidden
+        & > span {
+            width rem(6.8)
+            height rem(200) 
+            transition all .3s ease-in-out
+            background-image url('../../assets/count.png')
+        }
     }
 }
 </style>

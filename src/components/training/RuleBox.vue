@@ -1,12 +1,17 @@
 <template>
-    <tab 
-    :box="box"
-    :tabList="tabList" 
-    :animate="animate" 
-    :currentName="currentName" 
-    @handleSwitch="handleSwitch">
-        <dynamic-component :is="currentComponent"></dynamic-component>
-    </tab>
+    <div class="content bg-cover-all">
+      <div class="content-wrap flex-between">
+        <tab 
+        :nav="nav"
+        :tabList="tabList" 
+        :currentName="currentName" 
+        @handleSwitch="handleSwitch">
+        </tab>
+        <transition mode="out-in" enter-active-class="animated faster flipInY" leave-active-class="animated faster flipOutY">
+            <dynamic-component :is="currentComponent"></dynamic-component>   
+        </transition>
+      </div>
+    </div>
 </template>
 
 <script>
@@ -21,13 +26,9 @@ export default {
   },
   data () {
     return {
-      box: 'rule-box',
+      nav: 'rule-nav',
       currentName: 'assign',
       currentComponent: 'CompRuleAssign',
-      animate: {
-        entrance: 'animated faster flipInY',
-        exits: 'animated faster flipOutY'
-      },
       tabList: [
         {
           name: 'assign',
@@ -48,3 +49,38 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+.content {
+    width rem(345)
+    height rem(648)
+    background-image url('../../assets/train_box.png')
+    padding-top rem(80)
+    display flex
+    justify-content center
+    .content-wrap {
+      width rem(277)
+      height rem(540)
+      flex-direction column
+      transform translate(rem(-6.5), rem(0))
+      padding-bottom rem(3)
+      & >>> .rule-nav {
+        width 100%
+        height rem(60)
+        position relative
+        .nav-inner {
+            width 100%
+            height 100%
+            display flex
+            align-items center
+            justify-content space-between
+            & > li {
+                width rem(132)
+                height rem(30)
+            }
+        }
+      }
+    }
+}
+</style>
+

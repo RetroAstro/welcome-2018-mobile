@@ -9,18 +9,13 @@
                         :key="index"
                         :class="[
                         {
-                            active: item.name === currentName
-                        },
-                        {
                             bounceIn: item.name === currentName 
                         },
                         'btn', 'bg-cover-all', 'flex-center', 'animated', 'slow'
                         ]" 
-                        class=""
-                        :data-name="item.name"
+                        :style="{ backgroundImage: currentName === item.name ? `url('${require(`../../assets/header_${item.path}_active.png`)}')` : `url('${require(`../../assets/header_${item.path}.png`)}')` }"
                         @click="handleSwitch(item)"
                         >
-                        <span>{{item.name}}</span>
                         </li>
                     </ul>
                 </div>
@@ -138,7 +133,7 @@ export default {
         border-bottom 1.5px solid #33177b
         z-index 100
         .nav-inner {
-            width rem(334)
+            width rem(350)
             height rem(50)
             margin 0 auto
             overflow hidden
@@ -146,6 +141,7 @@ export default {
                 width rem(473)
                 height rem(50)
                 position relative
+                padding-left rem(14)
                 .btns-box {
                     width 100%
                     height 100%
@@ -153,39 +149,6 @@ export default {
                         width rem(53)
                         height rem(32)
                         position relative
-                        background-image url('../../assets/header_btn2.png')
-                        & > span {
-                            font-size rem(18)
-                            color #fff
-                            text-shadow rem(1.5) rem(1.5) #32167a
-                            transform translate(rem(-3), rem(-3))
-                        }
-                    }
-                    .btn::after {
-                        visibility hidden
-                        display block
-                        content attr(data-name)
-                        position absolute
-                        top 0
-                        left 0
-                        right 0
-                        bottom 0
-                        background-image url('../../assets/header_btn1.png')
-                        background-size 100% 100%
-                        background-repeat no-repeat
-                        background-position center center
-                        z-index 200
-                        font-size rem(18)
-                        color #fff199
-                        text-shadow rem(1.5) rem(1.5) #32167a
-                        display flex
-                        align-items center
-                        justify-content center
-                        padding-right rem(6)
-                        padding-bottom rem(6)
-                    }
-                    .btn.active::after {
-                        visibility visible
                     }
                 }
             }
@@ -295,29 +258,17 @@ export default {
                     }
                     .day {
                         transform translate(rem(-4), rem(3))
-                        & > span {
-                            transform translate(rem(-1), rem(-2))
-                        }
                         background-image url('../../assets/time_wrap1.png')
                     }
                     .hour {
-                        & > span {
-                            transform translate(rem(-1), rem(-2))
-                        }
                         background-image url('../../assets/time_wrap2.png')
                     }
                     .minute {
                         transform translate(rem(6), rem(0))
-                        & > span {
-                            transform translate(rem(0), rem(-2))
-                        }
                         background-image url('../../assets/time_wrap3.png')
                     }
                     .second {
                         transform translate(rem(10), rem(3))
-                        & > span {
-                            transform translate(rem(0), rem(-2))
-                        }
                         background-image url('../../assets/time_wrap4.png')
                     }
                 }

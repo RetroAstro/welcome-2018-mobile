@@ -1,13 +1,14 @@
 <template>
-    <div class="team-wrap">
+    <div class="content-box bg-cover-all">
         <tab 
-        :box="box"
+        :nav="nav"
         :tabList="tabList" 
-        :animate="animate" 
         :currentName="currentName" 
         @handleSwitch="handleSwitch">
-            <dynamic-component :is="currentComponent"></dynamic-component>
         </tab>
+        <transition mode="out-in" enter-active-class="animated faster flipInY" leave-active-class="animated faster flipOutY">
+            <dynamic-component :is="currentComponent"></dynamic-component>   
+        </transition>
     </div>
 </template>
 
@@ -25,13 +26,9 @@ export default {
   },
   data () {
     return {
-      box: 'team-box',
+      nav: 'team-nav',
       currentName: 'club',
       currentComponent: 'CompClub',
-      animate: {
-        entrance: 'animated faster flipInY',
-        exits: 'animated faster flipOutY'
-      },
       tabList: [
         {
           name: 'club',
@@ -58,23 +55,27 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.team-wrap {
-    width 80%
-    height rem(650)
-    padding-top rem(12)
-    & >>> .team-box {
-      flex-direction column
+.content-box {
+    width rem(345)
+    height rem(564)
+    background-image url('../../assets/mien_team_box.png')
+    padding-top rem(80)
+    padding-left rem(26.5)
+    padding-right rem(39.5)
+    & >>> .team-nav {
+      width 100%
+      height rem(50)
       position relative
-      .nav {
-        width 100%
-        height rem(40)
-        .nav-inner {
-            width 100%
-            & > li {
-              width rem(86)
-              height rem(29)
-            }
-        }
+      .nav-inner {
+          width 100%
+          height 100%
+          display flex
+          align-items center
+          justify-content space-between
+          & > li {
+              width rem(85)
+              height rem(30)
+          }
       }
     }
 }

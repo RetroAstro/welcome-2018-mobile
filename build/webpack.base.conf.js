@@ -5,6 +5,7 @@ const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
+
 const isProd = process.env.NODE_ENV === 'production'
 
 const resolve = dir => path.join(__dirname, '..', dir)
@@ -24,8 +25,7 @@ module.exports = {
           resolve('node_modules')
         ],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js',
-            '@common': resolve('src/common')
+            'vue$': 'vue/dist/vue.esm.js'
         }
     },
     module: {
