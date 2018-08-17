@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import async from './async'
 
 Vue.use(Router)
-
-const _import = file => () => import(/* webpackChunkName: "async-component" */ '../components/' + file + '.vue')
 
 export default new Router({
   mode: 'history',
@@ -11,27 +10,31 @@ export default new Router({
     {
       path: '/',
       redirect: '/index',
-      component: _import('Layout'),
+      component: async.Layout,
       children: [
         {
           path: 'index',
-          component: _import('index/Index')
+          component: async.Index
         },
         {
           path: 'mien',
-          component: _import('mien/Mien')
-        },
-        {
-          path: 'tips',
-          component: _import('tips/Tips')
+          component: async.Mien
         },
         {
           path: 'training',
-          component: _import('training/Training')
+          component: async.Training
+        },
+        {
+          path: 'tips',
+          component: async.Analyze
         },
         {
           path: 'activity',
-          component: _import('activity/Activity')
+          component: async.Activity
+        },
+        {
+          path: 'analyze',
+          component: async.Analyze
         }
       ]
     }

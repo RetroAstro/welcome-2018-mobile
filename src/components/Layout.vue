@@ -1,9 +1,9 @@
 <template>
     <div class="main">
-        <comp-header></comp-header>
+        <comp-header :currentName="currentName" @launch="launch"></comp-header>
         <transition mode="out-in" enter-active-class="animated faster bounceIn" leave-active-class="animated faster bounceOut">
             <keep-alive>
-                <router-view></router-view>            
+                <router-view @launch="launch"></router-view>            
             </keep-alive>
         </transition>
         <comp-footer></comp-footer>
@@ -20,10 +20,20 @@ export default {
     CompHeader,
     CompFooter
   },
+  data () {
+    return {
+      currentName: '首页'
+    }
+  },
   created () {
     window.addEventListener('load', () => {
       this.$router.push({path: '/'})
     })
+  },
+  methods: {
+    launch (name) {
+      this.currentName = name
+    }
   }
 }
 </script>

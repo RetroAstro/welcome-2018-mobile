@@ -20,6 +20,7 @@
                     </ul>
                 </div>
             </div>
+            <div class="blur"></div>
         </div>
         <div class="robot-box bg-cover-all">
             <div class="hand bg-cover-all"></div>
@@ -50,9 +51,14 @@ export default {
   components: {
     CountDown
   },
+  props: {
+    currentName: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
-      currentName: '首页',
       items: [
         {
           name: '首页',
@@ -111,7 +117,7 @@ export default {
       })
     },
     handleSwitch (item) {
-      this.currentName = item.name
+      this.$emit('launch', item.name)
       this.$router.push({path: `/${item.path}`})
     }
   }
@@ -132,16 +138,23 @@ export default {
         background-color #9be9fe
         border-bottom 1.5px solid #33177b
         z-index 100
+        .blur {
+            position absolute
+            top 0
+            right 0
+            background linear-gradient(to right,rgba(155,233,254,0) 0%,rgba(155,233,254,1) 50%)
+            opacity 0.66
+            width rem(23)
+            height rem(50)
+        }
         .nav-inner {
-            width rem(350)
+            width rem(352)
             height rem(50)
             margin 0 auto
-            overflow hidden
             .scroll-wrap {
                 width rem(473)
                 height rem(50)
                 position relative
-                padding-left rem(14)
                 .btns-box {
                     width 100%
                     height 100%

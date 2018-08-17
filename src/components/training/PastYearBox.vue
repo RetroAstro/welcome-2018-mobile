@@ -27,6 +27,8 @@
 
 <script>
 
+import util from '@utils/util'
+
 export default {
   data () {
     return {
@@ -80,10 +82,10 @@ export default {
     }
   },
   methods: {
-    handleClick (num) {
+    handleClick: util.throttle(function (num) {
       this.currentIndex += num
       this.currentIndex = this.currentIndex < 0 ? 2 : this.currentIndex > 2 ? 0 : this.currentIndex
-    },
+    }, 1500),
     handlePlay () {
       this.player = this.$refs.video
       this.currentSrc = this.player.src

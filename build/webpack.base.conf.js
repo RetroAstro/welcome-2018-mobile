@@ -25,7 +25,9 @@ module.exports = {
           resolve('node_modules')
         ],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            '@utils': resolve('src/utils'),
+            '@service': resolve('src/service')
         }
     },
     module: {
@@ -66,7 +68,8 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                   limit: 10000,
-                  name: utils.assetsPath('img/[name].[hash:7].[ext]')
+                  name: utils.assetsPath('img/[name].[hash:7].[ext]'),
+                  publicPath: '/'
                 }
             },
             {

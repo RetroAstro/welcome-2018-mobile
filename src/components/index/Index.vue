@@ -27,7 +27,7 @@
                             想知道重邮校园的秘密？ 想和学长学姐零距离接触？ 热心的学长学姐都在这里，他们是重邮小百科，为你答疑解惑！
                         </div>
                         <div class="know-more">
-                            <img src="../../assets/more.png" class="more-btn">
+                            <img src="../../assets/more.png" class="more-btn" @click="handleSwitch({name: '首页', path: 'activity'})">
                         </div>
                     </div>
                     <div class="smile bg-cover-all">
@@ -38,7 +38,7 @@
                             萌新你好，欢迎来鲜肉集中营报道！听说这里有好多萌新的照片，也许Ta就是你未来的小伙伴~ 让美好的大学生活从一个微笑开始吧~
                         </div>
                         <div class="know-more">
-                            <img src="../../assets/more.png" class="more-btn">
+                            <img src="../../assets/more.png" class="more-btn" @click="handleSwitch({name: '首页', path: 'activity'})">
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="dots bg-cover-all"></div>
                         <div class="know-more">
-                            <img class="more-btn" src="../../assets/more.png">
+                            <img class="more-btn" src="../../assets/more.png" @click="handleSwitch({name: '军训', path: 'training'})">
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="dots bg-cover-all"></div>
                         <div class="know-more">
-                            <img class="more-btn" src="../../assets/more.png">
+                            <img class="more-btn" src="../../assets/more.png" @click="handleSwitch({name: '攻略', path: 'tips'})">
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                         </div>
                         <div class="dots bg-cover-all"></div>
                         <div class="know-more">
-                            <img class="more-btn" src="../../assets/more.png">
+                            <img class="more-btn" src="../../assets/more.png" @click="handleSwitch({name: '风采', path: 'mien'})">
                         </div>
                     </div>
                 </div>
@@ -127,6 +127,33 @@ export default {
         this.$refs.wrapper.classList.remove('animated', 'bounceIn')
       }, 2000)
     }, 1000)
+  },
+  methods: {
+    handleSwitch (item) {
+      this.$emit('launch', item.name)
+      this.$router.push({path: `/${item.path}`})
+    },
+    backtoTop () {
+      var timer = null
+      cancelAnimationFrame(timer)
+      var startTime = +new Date()
+      var b = document.body.scrollTop || document.documentElement.scrollTop
+      var d = 500
+      var c = b
+      timer = requestAnimationFrame(function func () {
+        var t = d - Math.max(0, startTime - (+new Date()) + d)
+        document.documentElement.scrollTop = document.body.scrollTop = t * (-c) / d + b
+        timer = requestAnimationFrame(func)
+        if (t === d) {
+          cancelAnimationFrame(timer)
+        }
+      })
+    }
+  },
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      vm.backtoTop()
+    })
   }
 }
 </script>
@@ -261,6 +288,7 @@ export default {
                         bottom 0
                         width 100%
                         height rem(80)
+                        z-index 555
                         .more-btn {
                             width rem(110)
                             height rem(31)
@@ -306,6 +334,7 @@ export default {
                         height rem(102)
                     }
                     .know-more {
+                        z-index 555
                         bottom rem(-3)
                     }
                     .more-btn {
@@ -384,6 +413,7 @@ export default {
                 }
                 .know-more {
                     position absolute
+                    z-index 555
                     bottom rem(22)
                     width 100%
                     height rem(80)
@@ -429,10 +459,10 @@ export default {
                 z-index 28
             }
             .mien .title {
-                background-image url('../../assets/title_train.png')
+                background-image url('../../assets/title_mien.png')
             }
             .tips .title {
-                background-image url('../../assets/title_train.png')
+                background-image url('../../assets/title_tips.png')
             }
             .about .title {
                 background-image url('../../assets/title_train.png')

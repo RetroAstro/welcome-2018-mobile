@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "better-scroll": "^1.12.6",
+    "echarts": "^4.1.0",
     "prerender-spa-plugin": "^3.2.1",
     "vue": "^2.5.16",
     "vue-photo-preview": "^1.0.9",

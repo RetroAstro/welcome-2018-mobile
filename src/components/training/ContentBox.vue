@@ -25,6 +25,8 @@
 
 <script>
 
+import util from '@utils/util'
+
 export default {
   data () {
     return {
@@ -33,37 +35,37 @@ export default {
           photoIndex: 0,
           name: 'text2',
           photos: [
-            'carousel1',
-            'carousel2',
-            'carousel3'
+            'fist1',
+            'fist2',
+            'fist3'
           ]
         },
         {
           photoIndex: 0,
           name: 'text1',
           photos: [
-            'carousel1',
-            'carousel2',
-            'carousel3'
+            'team_col1',
+            'team_col2',
+            'team_col3'
           ]
         },
         {
           photoIndex: 0,
           name: 'text3',
           photos: [
-            'carousel1',
-            'carousel2',
-            'carousel3'
+            'hand_lan1',
+            'hand_lan2',
+            'hand_lan3'
           ]
         }
       ]
     }
   },
   methods: {
-    handleSwitch (index, num) {
+    handleSwitch: util.throttle(function (index, num) {
       this.items[index].photoIndex += num
       this.items[index].photoIndex = this.items[index].photoIndex < 0 ? 2 : this.items[index].photoIndex > 2 ? 0 : this.items[index].photoIndex
-    }
+    }, 1000)
   }
 }
 </script>

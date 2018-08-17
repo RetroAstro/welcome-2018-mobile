@@ -5,7 +5,7 @@
                 <li 
                 ref="tabs"
                 v-for="(tab, index) in tabList" :key="index"
-                :class="[tab.name, 'bg-cover-all', 'animated', {active: currentName === tab.name}]"
+                :class="[{ tada: tada && currentName === tab.name }, tab.name, 'bg-cover-all', 'animated', { active: currentName === tab.name }]"
                 :style="{backgroundImage: currentName === tab.name ? `url('${require(`../assets/${tab.name}_active.png`)}')` : `url('${require(`../assets/${tab.name}.png`)}')` }"
                 @touchstart="handleSwitch(tab)"
                 ></li>
@@ -32,6 +32,9 @@ export default {
     currentName: {
       type: String,
       required: true
+    },
+    tada: {
+      type: Boolean
     }
   },
   data () {
