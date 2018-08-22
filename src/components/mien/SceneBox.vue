@@ -2,14 +2,16 @@
     <div class="content-box bg-cover-all">
         <div class="content-wrap">
             <div class="scene-box">
-                <div v-for="(item, index) in items" :key="index" class="scene bg-cover-all">
-                    <div class="photo bg-cover-all" :style="{ backgroundImage: `url('${require(`../../assets/${item.picture}.jpg`)}')` }"></div>
+                <div v-for="(item, index) in items[currentIndex]" :key="index" class="scene bg-cover-all">
+                    <div class="photo">
+                        <img :src="`${require(`../../assets/${item.picture}.png`)}`" :preview="currentIndex">
+                    </div>
                     <div class="name flex-center">{{item.name}}</div>
                 </div>
             </div>
             <div class="arrow-wrap flex-around">
-                <div class="left bg-cover-all flex-center"><span class="bg-cover-all"></span></div>
-                <div class="right bg-cover-all flex-center"><span class="bg-cover-all"></span></div>
+                <div class="left bg-cover-all flex-center"><span class="bg-cover-all" @click="handleSwitch(-1)"></span></div>
+                <div class="right bg-cover-all flex-center"><span class="bg-cover-all" @click="handleSwitch(1)"></span></div>
             </div>
         </div>
     </div>
@@ -17,28 +19,75 @@
 
 <script>
 
+import util from '@utils/util'
+
 export default {
   data () {
     return {
+      currentIndex: 0,
       items: [
-        {
-          picture: 'carousel3',
-          name: '春华秋实'
-        },
-        {
-          picture: 'carousel3',
-          name: '春华秋实'
-        },
-        {
-          picture: 'carousel3',
-          name: '春华秋实'
-        },
-        {
-          picture: 'carousel3',
-          name: '春华秋实'
-        }
+        [
+          {
+            picture: 'bashiwan',
+            name: '八十万'
+          },
+          {
+            picture: 'bieyoudongtian',
+            name: '别有洞天'
+          },
+          {
+            picture: 'chunhuaqiushi',
+            name: '春华秋实'
+          },
+          {
+            picture: 'erjiaoxiyang',
+            name: '二教夕阳'
+          }
+        ],
+        [
+          {
+            picture: 'gaoshanliushui',
+            name: '高山流水'
+          },
+          {
+            picture: 'linyindadao',
+            name: '林荫大道'
+          },
+          {
+            picture: 'luoyinbinfen',
+            name: '落英缤纷'
+          },
+          {
+            picture: 'niaokanchongyou',
+            name: '鸟瞰重邮'
+          }
+        ],
+        [
+          {
+            picture: 'shutu',
+            name: '数字图书馆'
+          },
+          {
+            picture: 'bajiao',
+            name: '仰望八教'
+          },
+          {
+            picture: 'yifulou',
+            name: '逸夫楼'
+          },
+          {
+            picture: 'yuhonglian',
+            name: '雨红莲'
+          }
+        ]
       ]
     }
+  },
+  methods: {
+    handleSwitch: util.throttle(function (num) {
+      this.currentIndex += num
+      this.currentIndex = this.currentIndex < 0 ? 0 : this.currentIndex > (this.items.length - 1) ? (this.items.length - 1) : this.currentIndex
+    }, 1000)
   }
 }
 </script>
@@ -72,6 +121,11 @@ export default {
                 .photo {
                     width 100%
                     height rem(100)
+                    position relative
+                    & > img {
+                        width 100%
+                        height 100%
+                    }
                 }
                 .name {
                     width 100%

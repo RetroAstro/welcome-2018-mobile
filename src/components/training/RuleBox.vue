@@ -8,7 +8,9 @@
         @handleSwitch="handleSwitch">
         </tab>
         <transition mode="out-in" enter-active-class="animated faster flipInY" leave-active-class="animated faster flipOutY">
-            <dynamic-component :is="currentComponent"></dynamic-component>   
+            <keep-alive>
+                <dynamic-component :is="currentComponent"></dynamic-component>   
+            </keep-alive>
         </transition>
       </div>
     </div>

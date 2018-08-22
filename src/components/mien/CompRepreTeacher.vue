@@ -82,7 +82,7 @@ export default {
             position relative
             .row {
                 width rem(130)
-                height 100%
+                height rem(275)
                 flex-direction column
                 position relative
                 .picture-wrap {

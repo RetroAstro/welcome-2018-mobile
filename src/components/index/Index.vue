@@ -12,7 +12,7 @@
                 <div class="title bg-cover-all"></div>
                 <div class="content bg-cover-all">
                     <div class="map-wrap">
-                        <img src="../../assets/map.jpg" preview="0">
+                        <img src="../../assets/map.jpg" preview="0" rel="preload" href="/img/map.jpg" as="image">
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                             想知道重邮校园的秘密？ 想和学长学姐零距离接触？ 热心的学长学姐都在这里，他们是重邮小百科，为你答疑解惑！
                         </div>
                         <div class="know-more">
-                            <img src="../../assets/more.png" class="more-btn" @click="handleSwitch({name: '首页', path: 'activity'})">
+                            <img src="../../assets/more.png" class="more-btn" @click="handleSwitch({name: '活动', path: 'activity/help'})">
                         </div>
                     </div>
                     <div class="smile bg-cover-all">
@@ -35,10 +35,10 @@
                             <img src="../../assets/avatar_smile.png">
                         </div>
                         <div class="text-box flex-center">
-                            萌新你好，欢迎来鲜肉集中营报道！听说这里有好多萌新的照片，也许Ta就是你未来的小伙伴~ 让美好的大学生活从一个微笑开始吧~
+                            萌新你好，欢迎来鲜肉集中营报道！听说这里有好多萌新的照片，快来为你的班级注入萌新能量，美好的大学生活从认识新同学开始~
                         </div>
                         <div class="know-more">
-                            <img src="../../assets/more.png" class="more-btn" @click="handleSwitch({name: '首页', path: 'activity'})">
+                            <img src="../../assets/more.png" class="more-btn" @click="handleSwitch({name: '活动', path: 'activity/smile'})">
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                             <img src="../../assets/tips.png" class="tips animated pulse">
                         </div>
                         <div class="text-box">
-                            最齐全的老乡群，新生群信息，让你提前认识学长学姐；最完整的火车站、机场到学校的交通路线；最推荐的寝室神器和学校周边美食地图。
+                            最常用的官方网页和微信公众号，了解学校最新动态；最完整的火车站、机场到学校的交通路线；最推荐的寝室神器和学校周边美食地图。
                         </div>
                         <div class="dots bg-cover-all"></div>
                         <div class="know-more">
@@ -95,12 +95,12 @@
                         <div class="avatar-box flex-center">
                             <img src="../../assets/redrock.png" class="redrock animated pulse">
                         </div>
-                        <div class="text-box">
-                            红岩网校工作站，让你看见互联网+和团队的力量。
+                        <div class="text-box" style="text-align:center;">
+                            红岩网校工作站<br/> 让你看见互联网+和团队的力量
                         </div>
                         <div class="dots bg-cover-all"></div>
                         <div class="know-more">
-                            <img class="more-btn" src="../../assets/more.png">
+                            <img class="more-btn" src="../../assets/more.png" @click="handleSwitch({name: '我们', path: 'about'})">
                         </div>
                     </div>
                 </div>
@@ -131,6 +131,10 @@ export default {
   methods: {
     handleSwitch (item) {
       this.$emit('launch', item.name)
+      if (item.path === 'about') {
+        window.location.href = 'http://hongyan.cqupt.edu.cn/aboutus/'
+        return
+      }
       this.$router.push({path: `/${item.path}`})
     },
     backtoTop () {
@@ -330,7 +334,7 @@ export default {
                     background-image url('../../assets/smile.png')
                     transform translateX(rem(-6.5))
                     .photo-box img {
-                        width rem(100)
+                        width rem(110)
                         height rem(102)
                     }
                     .know-more {
@@ -465,7 +469,7 @@ export default {
                 background-image url('../../assets/title_tips.png')
             }
             .about .title {
-                background-image url('../../assets/title_train.png')
+                background-image url('../../assets/title_about.png')
             }
             .training .title {
                 background-image url('../../assets/title_train.png')

@@ -26,7 +26,7 @@ export default {
       type: Array,
       required: true,
       validator (value) {
-        return value.map((val) => typeof val === 'object' && val.name && val.component)
+        return value.map((val) => typeof val === 'object' && val.name)
       }
     },
     currentName: {
@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     handleSwitch (item) {
-      if (this.nav === 'training-nav' || this.nav === 'mien-video-nav' || this.nav === 'representer-nav') {
+      if (this.nav === 'training-nav' || this.nav === 'mien-video-nav' || this.nav === 'representer-nav' || this.nav === 'tips-nav' || this.nav === 'activity-nav') {
         var pass = true
         this.$refs.tabs.map((tab) => {
           if (tab.classList.contains('active') && this.currentName === item.name) {

@@ -7,7 +7,9 @@
         @handleSwitch="handleSwitch">
         </tab>
         <transition mode="out-in" enter-active-class="animated faster flipInY" leave-active-class="animated faster flipOutY">
-            <dynamic-component :is="currentComponent"></dynamic-component>   
+            <keep-alive>
+                <dynamic-component :is="currentComponent"></dynamic-component>   
+            </keep-alive>
         </transition>
     </div>
 </template>
@@ -69,6 +71,7 @@ export default {
       .nav-inner {
           width 100%
           height 100%
+          padding-right rem(.5)
           display flex
           align-items center
           justify-content space-between

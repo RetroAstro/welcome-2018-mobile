@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+// import Vue from 'vue'
+// import Router from 'vue-router'
 import async from './async'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
-  mode: 'history',
+export default new VueRouter({
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -26,10 +26,10 @@ export default new Router({
         },
         {
           path: 'tips',
-          component: async.Analyze
+          component: async.Tips
         },
         {
-          path: 'activity',
+          path: 'activity/:type',
           component: async.Activity
         },
         {

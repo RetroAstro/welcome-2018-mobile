@@ -57,6 +57,18 @@ export default {
       required: true
     }
   },
+  watch: {
+    currentName (value) {
+      var scroll = document.querySelector('.scroll-wrap')
+      if (value === '风采') {
+        scroll.style.transition = `transform .3s ease-in-out`
+        scroll.style.transform = `translateX(-119px)`
+      } else {
+        scroll.style.transition = `transform .3s ease-in-out`
+        scroll.style.transform = `translateX(0px)`
+      }
+    }
+  },
   data () {
     return {
       items: [
@@ -65,28 +77,28 @@ export default {
           path: 'index'
         },
         {
-          name: '军训',
-          path: 'training'
+          name: '活动',
+          path: 'activity'
         },
         {
           name: '攻略',
           path: 'tips'
         },
         {
-          name: '风采',
-          path: 'mien'
-        },
-        {
-          name: '活动',
-          path: 'activity'
-        },
-        {
           name: '军训',
           path: 'training'
         },
         {
+          name: '揭秘',
+          path: 'analyze'
+        },
+        {
           name: '风采',
           path: 'mien'
+        },
+        {
+          name: '我们',
+          path: 'about'
         }
       ],
       timeList: {
@@ -118,7 +130,11 @@ export default {
     },
     handleSwitch (item) {
       this.$emit('launch', item.name)
-      this.$router.push({path: `/${item.path}`})
+      if (item.path === 'about') {
+        window.location.href = 'http://hongyan.cqupt.edu.cn/aboutus/'
+        return
+      }
+      item.path === 'activity' ? this.$router.push({path: `/${item.path}/help`}) : this.$router.push({path: `/${item.path}`})
     }
   }
 }
@@ -152,8 +168,10 @@ export default {
             height rem(50)
             margin 0 auto
             .scroll-wrap {
-                width rem(473)
+                width rem(472)
                 height rem(50)
+                transition all .3s ease-in-out
+                transition-property transform
                 position relative
                 .btns-box {
                     width 100%

@@ -5,7 +5,7 @@ module.exports = {
     build: {
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: '',
-        assetsPublicPath: './',
+        assetsPublicPath: '/',
         productionSourceMap: false,
         productionGzip: true,
         productionGzipExtensions: ['js', 'css'],
@@ -16,7 +16,7 @@ module.exports = {
         host: 'localhost',
         port: 8080,
         autoOpenBrowser: true,
-        assetsSubDirectory: 'static',
+        assetsSubDirectory: '',
         assetsPublicPath: '/',
         cssSourceMap: true,
         proxyTable: {

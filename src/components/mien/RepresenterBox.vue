@@ -7,7 +7,9 @@
         @handleSwitch="handleSwitch">
         </tab>
         <transition mode="out-in" enter-active-class="animated faster fadeInUp" leave-active-class="animated faster fadeOutDown">
-            <dynamic-component :is="currentComponent"></dynamic-component>   
+            <keep-alive>
+                <dynamic-component :is="currentComponent"></dynamic-component>   
+            </keep-alive>
         </transition>
     </div>
 </template>

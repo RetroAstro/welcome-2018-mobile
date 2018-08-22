@@ -11,7 +11,9 @@
             </tab>
             <div class="content-box bg-cover-all">
                 <transition mode="out-in" enter-active-class="animated faster bounceIn" leave-active-class="animated faster bounceOut">
-                    <dynamic-component :is="currentComponent"></dynamic-component>   
+                  <keep-alive>
+                      <dynamic-component :is="currentComponent"></dynamic-component>   
+                  </keep-alive>
                 </transition>
             </div>
         </div>
@@ -110,7 +112,6 @@ export default {
             height rem(40)
             .nav-inner {
                 width 48%
-                height rem(50)
                 & > li {
                     width rem(62)
                     height rem(38)

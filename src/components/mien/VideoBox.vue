@@ -2,7 +2,7 @@
     <div class="content-box bg-cover-all">
         <div class="video-box bg-cover-all flex-center">
             <div class="video-wrap" @click="handlePlay">
-                <video preload="preload" ref="video" style="width:100%;height:100%;object-fit:fill;" :src="currentSrc"></video>
+                <video ref="video" style="width:100%;height:100%;object-fit:fill;" :src="`${require(`../../media/${currentSrc}.mp4`)}`"></video>
                 <div class="video-grey translate-center">
                     <div class="pause bg-cover-all translate-center"></div>
                 </div>
@@ -14,13 +14,13 @@
                     <li v-for="(item, index) in items" :key="index" class="video-title">
                         <div 
                         v-for="(video, index) in item" :key="index" 
-                        :class="[{active: currentSrc === video.src }, 'video-text','flex-center']" 
+                        :class="[{active: currentSrc === video.src }, 'video-text', 'flex-center']" 
                         @click="currentSrc = video.src">{{video.name}}</div>
                     </li>
                 </ul>
             </div>
-            <div class="left bg-cover-all flex-center" @click="handleClick(-1)"><span class="bg-cover-all"></span></div>
-            <div class="right bg-cover-all flex-center" @click="handleClick(1)"><span class="bg-cover-all"></span></div>
+            <div class="left bg-cover-all flex-center" @touchstart="handleClick(-1)"><span class="bg-cover-all"></span></div>
+            <div class="right bg-cover-all flex-center" @touchstart="handleClick(1)"><span class="bg-cover-all"></span></div>
         </div>
     </div>
 </template>
@@ -34,52 +34,60 @@ export default {
     return {
       currentIndex: 0,
       player: null,
-      currentSrc: 'http://220.170.49.117/6/r/i/x/w/rixwapisvowouhufsoimbecalgvxsq/hc.yinyuetai.com/F2B4016449734C6683C1D2CF0B462D60.mp4?sc=54685f968f28467e&br=782&vid=3240325&aid=215&area=ML&vst=3',
+      currentSrc: 'zhaosheng',
       items: [
         [
           {
-            name: '1',
-            src: 'a'
+            name: '招生宣传片',
+            src: 'zhaosheng'
           },
           {
-            name: '2',
-            src: 'http://220.170.49.117/6/r/i/x/w/rixwapisvowouhufsoimbecalgvxsq/hc.yinyuetai.com/F2B4016449734C6683C1D2CF0B462D60.mp4?sc=54685f968f28467e&br=782&vid=3240325&aid=215&area=ML&vst=3'
+            name: '军训汇演',
+            src: 'junxunhuiyan'
           },
           {
-            name: '3',
-            src: 'b'
+            name: '鸟瞰新重邮',
+            src: 'niaokanxinchongyou'
+          }
+        ],
+        [
+          {
+            name: '2015红岩招新',
+            src: 'hongyan2015'
+          },
+          {
+            name: '2016红岩招新',
+            src: 'hongyan2016'
+          },
+          {
+            name: '2017红岩招新',
+            src: 'hongyan2017'
           },
         ],
         [
           {
-            name: '4',
-            src: 'c'
+            name: '樱花季专题',
+            src: 'yinhua'
           },
           {
-            name: '5',
-            src: 'd'
+            name: '春风十里',
+            src: 'chunfengshili'
           },
           {
-            name: '6',
-            src: 'e'
-          },
-        ],
-        [
-          {
-            name: '7',
-            src: 'f'
-          },
-          {
-            name: '8',
-            src: 'g'
-          },
-          {
-            name: '9',
-            src: 'h'
-          },
+            name: '航拍校运会',
+            src: 'xiaoyunhui'
+          }
         ]
       ]
     }
+  },
+  mounted () {
+    this.player = this.$refs.video
+    document.addEventListener('webkitfullscreenchange', () => {
+      if (!document.webkitFullscreenElement) {
+        this.player.pause()
+      }
+    })
   },
   methods: {
     handleClick: util.throttle(function (num) {
@@ -87,7 +95,6 @@ export default {
       this.currentIndex = this.currentIndex < 0 ? 2 : this.currentIndex > 2 ? 0 : this.currentIndex
     }, 1500),
     handlePlay () {
-      this.player = this.$refs.video
       this.currentSrc = this.player.src
       this.player.play()
       this.player.requestFullscreen ? this.player.requestFullscreen() : this.player.webkitRequestFullScreen()
@@ -133,7 +140,7 @@ export default {
         height rem(66)
         position relative
         .video-menu-wrap {
-            width 82%
+            width 86%
             margin 0 auto
             height rem(66)
             overflow hidden
@@ -150,13 +157,14 @@ export default {
                     display flex
                     justify-content space-between
                     .video-text {
-                        width rem(70)
+                        width rem(76)
                         height 100%
                         border-radius rem(4)
                         border 1.5px solid #463195
                         background #d5fcfe
                         color #442d94
-                        font-size rem(14)
+                        font-size rem(11)
+                        padding-top rem(2)
                         &.active {
                             background-color #559cdd
                             color #fff
@@ -170,7 +178,9 @@ export default {
             position absolute
             top 50%
             transform translateY(-50%)
-            left 0
+            left rem(-9)
+            width rem(30)
+            height rem(30)
             & > span {
                 display block
                 width rem(12)
@@ -179,10 +189,12 @@ export default {
             }
         }
         .right {
+            width rem(30)
+            height rem(30)
             position absolute
             top 50%
             transform translateY(-50%)
-            right 0
+            right rem(-9)
             & > span {
                 display block
                 width rem(12)

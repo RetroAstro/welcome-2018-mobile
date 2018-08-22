@@ -2,71 +2,92 @@
     <div class="club-box bg-cover-all flex-between">
         <div class="club-wrap">
             <div class="slide-down ">
-                <comp-club-slide></comp-club-slide>
+                <slider :selected="selected" :options="options" @changeOption="changeOption"></slider>
             </div>
-            <transition enter-active-class="fadeIn animated" leave-active-class="fadeOut animated">
+            <transition enter-active-class="fadeIn animated faster" leave-active-class="fadeOut animated faster">
                 <div class="text-box flex-between" v-show="show">
-                    <div v-for="(item, index) in items[currentIndex]" :key="index" class="text-inner">
+                    <div v-for="(item, index) in itemList.items[itemList.currentIndex]" :key="index" class="text-inner">
                         <div class="club-title">
-                            <i class="title bg-cover-all" :style="{ backgroundImage: `url('${require(`../../assets/${item.src}.png`)}')` }"></i>
+                            <img :src="`${require(`../../assets/${item.name}.png`)}`" class="title">
                         </div>
                         <div class="text-content">
-                            {{item.text}}
+                            {{item.content}}
                         </div>
                     </div>
-                </div>
+                </div>  
             </transition>
-            <div class="arrow-wrap flex-around">
-                    <div class="left bg-cover-all flex-center"><span class="bg-cover-all" @click="handleSwitch(-1)"></span></div>
-                    <div class="right bg-cover-all flex-center"><span class="bg-cover-all" @click="handleSwitch(1)"></span></div>
-            </div>      
+        </div>
+        <div class="arrow-wrap flex-around" v-show="itemList.items.length > 1">
+                <div class="left bg-cover-all flex-center"><span class="bg-cover-all" @click="handleSwitch(-1)"></span></div>
+                <div class="right bg-cover-all flex-center"><span class="bg-cover-all" @click="handleSwitch(1)"></span></div>
         </div>
     </div>
 </template>
 
 <script>
 
-import CompClubSlide from './CompClubSlide.vue'
 import util from '@utils/util'
+import mock from '@service/mock'
 
 export default {
-  components: {
-    CompClubSlide
-  },
   data () {
     return {
-      currentIndex: 0,
       show: true,
-      items: [
-        [
-          {
-            src: 'g_office',
-            text: '重庆邮电大学校团委办公室（以下简称办公室）是共青团重庆邮电大学委员会直属机构之一，是学校团学工作的枢纽与核心，在团委与各校级学生组织之间起到桥梁和枢纽的作用，是所有学生组织中与老师联系最紧密的部门，是团委老师的得力助手。办公室负责团委工作的上传下达——向上通过制作团委工作简报《重邮共青团》、日报送、月报送等，向团中央、团市委汇报学校团学工作动态；向下联系沟通各校级学生组织，传达团委相关工作要求，并针对学生组织相关工作予以监督，参与学生组织各类活动的筹备工作；监督并完善团建在线网站的建设。同时，办公室还协助完成学校大型活动的会务、秘书工作，负责各项文件、奖状资料的管理工作。'
-          }
-        ],
-        [
-          {
-            src: 'g_office',
-            text: '组织部作为校团委直属四部室之一，主要负责全校共青团员思想教育、基层团组织建设工作，全力推进以“青年马克思主义者培养工程”为核心的团干部的培训管理及考核工作。为提高基层团干部及校级学生干部的政治、思想道德素质和工作能力，增强团支部凝聚力，组织部积极开展“公推直选”、“团组织生活”、“主题团日活动”、“特色团支部创建”等各项特色活动，为进一步开展团支部活力工程，调动新生团干部工作积极性，组织部开展了“新生团干大比武”活动，为了完善，健全基层团支部建设，组织部对各团支部活动的开展进行指导与帮助。同时作为上级党组织和广大团员之间的纽带，组织部协助学生“推优入党”工作的进行，以及发展新团员、补办团员证、团费收缴、团组织关系接转等日常工作，另外还负责年度五四系列评优工作。'
-          }
-        ],
-        [
-          {
-            src: 'g_office',
-            text: '校团委宣传部是我校团委的重要部门，担负着向学校、校团委各学生组织传达信息的重要任务，是校团委各部门正常工作的基本保证。宣传部是负责全校工作的宣传、报道，传达学校和团委的工作指示，会议通知，对广大团员青年进行思想政治教育、素质教育的宣传工作；负责通过网络、海报、橱窗、等形式开展政治思想教育工作。宣传部以丰富校园文化生活，活跃同学们的第二课堂，丰富广大同学的课余生活为己任，带领各团总支宣传部开展工作。'
-          }
+      selected: {
+        value: '团委办公室',
+        color: '#d5fbff'
+      },
+      options: [
+        {
+          value: '团委办公室'
+        },
+        {
+          value: '团委组织部'
+        },
+        {
+          value: '团委宣传部'
+        },
+        {
+          value: '学生社团联合会'
+        },
+        {
+          value: '学生科技联合会'
+        },
+        {
+          value: '青年志愿者协会'
+        },
+        {
+          value: '学生会'
+        },
+        {
+          value: '大学生艺术团'
+        }
+      ],
+      itemList: {
+        currentIndex: 0,
+        items: [
+          [
+            {
+              name: '团委办公室',
+              content: '重庆邮电大学团委办公室(以下简称办公室）是共青团重庆邮电大学委员会直属机构之一。是学校团学工作的枢纽与核心，在团委与各校级学生组织之间起到桥梁与枢纽的作用，是所有学生组织中与老师联系最密切的部门，是团委老师的得力助手。办公室负责团委工作的上传下达——向上通过制作团委工作简报《重邮共青团》等，向团中央、团市委汇报学校团学工作动态；向下沟通联系各校级学生组织，传达团委相关工作要求，并针对学生组织相关工作予以监督。参与学生组织各类活动的筹备工作，负责学生活动场地的管理工作，监督并完善团建在线网站的建设。同时，办公室还协助完成学校大型活动的会务，秘书工作，协助完成大学生志愿者暑期“三下乡”社会实践活动，负责各项文件，奖状资料的管理存档工作。'
+            }
+          ]
         ]
-      ]
+      },
     }
   },
   methods: {
+    changeOption (item) {
+      this.selected.value = item.value
+      this.itemList = mock.groups[item.value]
+    },
     handleSwitch: util.throttle(function (num) {
-    //   this.show = false
-    //   setTimeout(() => {
-    //     this.show = true
-    //     this.currentIndex += num
-    //     this.currentIndex = this.currentIndex < 0 ? 3 : this.currentIndex > 3 ? 0 : this.currentIndex
-    //   }, 500)
+      this.show = false
+      setTimeout(() => {
+        this.show = true
+        this.itemList.currentIndex += num
+        this.itemList.currentIndex = this.itemList.currentIndex < 0 ? (this.itemList.items.length - 1) : this.itemList.currentIndex > (this.itemList.items.length - 1) ? 0 : this.itemList.currentIndex
+      }, 500)
     }, 1500)
   }
 }
@@ -88,13 +109,70 @@ export default {
         height 100%
         display flex
         flex-direction column
-        justify-content space-between
+        justify-content flex-start
         .slide-down {
             width 100%
             height rem(40)
             display flex
             justify-content flex-end
             align-items center
+            margin-bottom rem(3)
+            & >>> .slide-menu {
+                width rem(110)
+                height rem(28)
+                position relative
+                .clickOut {
+                    width 100%
+                    height 100%
+                    display flex
+                    align-items center
+                    background-image url('../../assets/slide_menu.png')
+                }
+                .input-wrap {
+                    width 70%
+                    height rem(23)
+                    transform translateX(rem(4))
+                    .menu-content {
+                        width 100%
+                        height 100%
+                        color #645bac
+                        font-size rem(13)
+                        text-align center
+                    }
+                }
+                .option-wrap {
+                    position absolute
+                    left 0
+                    top rem(28)
+                    width rem(110)
+                    height rem(210)
+                    z-index 200
+                    overflow hidden
+                    .option {
+                        width 100%
+                        height rem(210)
+                        overflow-y auto
+                        flex-direction column
+                        background-color #9ce8ff
+                        border-left rem(2) solid #432a92
+                        border-right rem(2) solid #432a92
+                        border-bottom rem(2) solid #432a92
+                        border-bottom-left-radius 6px
+                        border-bottom-right-radius 6px
+                        & > li {
+                            width 100%
+                            padding-left rem(8)
+                            padding rem(6) 0
+                            padding-left rem(8)
+                            display flex
+                            align-items center
+                            justify-content flex-start
+                            font-size rem(13)
+                            color #645bac
+                        }
+                    }
+                }
+            }
         }
         .text-box {
             width 100%
@@ -103,18 +181,18 @@ export default {
             & > div {
                 width 100%
                 flex 1
-                margin-bottom rem(10)
             }
             .text-inner {
                 position relative
+                margin-bottom rem(10)
                 .club-title {
                     width 100%
                     display flex
                     justify-content flex-start
                     margin-bottom rem(6)
                     .title {
-                        width rem(80)
-                        height rem(18)
+                        width auto
+                        height rem(16)
                         &::before {
                             display block
                             content ''
@@ -137,29 +215,36 @@ export default {
                     position relative
                 }
             }
+            .text-inner:last-child {
+                margin-bottom 0
+            }
         }
-        .arrow-wrap {
-            width 100%
-            & > div {
-                width rem(40)
-                height rem(40)
-                transform translateX(rem(-6))
+    }
+    .arrow-wrap {
+        width 100%
+        position absolute
+        bottom rem(3)
+        left 50%
+        transform translateX(-50%)
+        & > div {
+            width rem(40)
+            height rem(40)
+            transform translateX(rem(-6))
+        }
+        .left {
+            & > span {
+                display block
+                width rem(15)
+                height rem(25)
+                background-image url('../../assets/left_arrow.png')
             }
-            .left {
-                & > span {
-                    display block
-                    width rem(15)
-                    height rem(25)
-                    background-image url('../../assets/left_arrow.png')
-                }
-            }
-            .right {
-                & > span {
-                    display block
-                    width rem(15)
-                    height rem(25)
-                    background-image url('../../assets/right_arrow.png')
-                }
+        }
+        .right {
+            & > span {
+                display block
+                width rem(15)
+                height rem(25)
+                background-image url('../../assets/right_arrow.png')
             }
         }
     }

@@ -1,9 +1,9 @@
 <template>
     <div class="content-box bg-cover-all">
         <div class="carousel-wrap">
-            <div class="carousel-box flex-between" v-for="(item, index) in items" :key="index">
-                <div class="left bg-cover-all flex-center" @touchstart="handleSwitch(index, -1)"><span class="bg-cover-all"></span></div>
-                <div class="right bg-cover-all flex-center" @touchstart="handleSwitch(index, 1)"><span class="bg-cover-all"></span></div>
+            <div class="carousel-box flex-between" v-for="(item, parIndex) in items" :key="parIndex">
+                <div class="left bg-cover-all flex-center" @touchstart="handleSwitch(parIndex, -1)"><span class="bg-cover-all"></span></div>
+                <div class="right bg-cover-all flex-center" @touchstart="handleSwitch(parIndex, 1)"><span class="bg-cover-all"></span></div>
                 <div class="title bg-cover-all flex-center">
                     <div class="bg-cover-all" :style="{ backgroundImage: `url('${require(`../../assets/${item.name}.png`)}')` }"></div>
                 </div>
@@ -12,9 +12,14 @@
                         <ul class="photo-wrap" :style="{ marginLeft: `-${item.photoIndex}00%` }">
                             <li 
                             v-for="(photo, index) in item.photos" :key="index"
-                            class="photo bg-cover-all"
-                            :style="{ backgroundImage: `url('${require(`../../assets/${photo}.jpg`)}')` }"
-                            ></li>
+                            class="photo"
+                            >
+                            <img 
+                            :src="`${require(`../../assets/${photo}.png`)}`"
+                            style="width:100%;height:100%;"
+                            :preview="parIndex"
+                            >
+                            </li>
                         </ul>
                     </div>
                 </div>

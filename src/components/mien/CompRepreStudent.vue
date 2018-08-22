@@ -7,7 +7,7 @@
                         <div class="photo bg-cover-all" :style="{backgroundImage: `url('${require(`../../assets/${item.picture}.jpg`)}')`}"></div>
                         <div class="content">
                             <div class="text-title">
-                                <div class="rule bg-cover-all"></div>
+                                <img :src="`${require(`../../assets/t_${item.name}.png`)}`">
                             </div>
                             <div class="text-content">{{item.content}}</div>
                         </div>
@@ -33,8 +33,8 @@ export default {
       currentPage: 0,
       items: [
         {
-          name: '将天星',
-          picture: '将天星',
+          name: '蒋天星',
+          picture: '蒋天星',
           content: '蒋天星，计算机科学与技术学院2015级智能科学与技术专业学生,上任红岩网校工作站站长。他锐意进取，奉献青春，充分发挥“红岩网校工作站”团支部技术优势，积极带领同学们组织参与各项网络志愿服务活动。'
         },
         {
@@ -98,18 +98,18 @@ export default {
                         padding-left rem(16)
                         .text-title {
                             width 100%
-                            height rem(30)
+                            height rem(20)
                             display flex
                             justify-content flex-start
-                            .rule {
-                                width rem(45)
+                            margin-bottom rem(3)
+                            & > img {
+                                width auto
                                 height rem(16)
-                                background-image url('../../assets/jtx.png')
                             }
                         }
                         .text-content {
                             text-align left 
-                            font-size rem(8.5)
+                            font-size rem(10.5)
                             color #432c93
                         }
                     }
@@ -145,6 +145,11 @@ export default {
                 }
             }
         }
+    }
+}
+@media screen and (max-width: 360px) {
+    .text-content {
+        font-size rem(8) !important
     }
 }
 </style>

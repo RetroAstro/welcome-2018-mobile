@@ -6,7 +6,7 @@
                 <router-view @launch="launch"></router-view>            
             </keep-alive>
         </transition>
-        <comp-footer></comp-footer>
+        <comp-footer @launch="launch"></comp-footer>
     </div>
 </template>
 

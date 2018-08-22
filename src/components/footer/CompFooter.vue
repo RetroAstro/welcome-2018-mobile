@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="text-box">
             <ul class="nav">
-                <li v-for="(item, index) in items" :key="index">{{item}}</li>
+                <li v-for="(item, index) in items" :key="index" @click="jump(item)">{{item.text}}</li>
             </ul>
             <div class="rules">
                 <p>本网站由红岩网校工作站负责开发，管理，</p>
@@ -21,11 +21,34 @@ export default {
   data () {
     return {
       items: [
-        '关于红岩网校 |',
-        ' 网站地图 |',
-        ' 指出错误 |',
-        ' 管理入口'
+        {
+          text: '关于红岩网校 |',
+          link: 'http://hongyan.cqupt.edu.cn/aboutus/'
+        },
+        {
+          text: ' 网站地图 |',
+          link: 'map'
+        },
+        {
+          text: ' 指出错误 |',
+          link: 'mailto:web@redrock.team'
+        },
+        {
+          text: ' 管理入口',
+          link: ''
+        }
       ]
+    }
+  },
+  methods: {
+    jump (item) {
+      if (item.link !== '' && item.link !== 'map') {
+        window.location.href = item.link
+      }
+      if (item.link === 'map') {
+        this.$emit('launch', '首页')
+        this.$router.push({ path: '/index' })
+      }
     }
   }
 }

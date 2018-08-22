@@ -9,7 +9,9 @@
             @handleSwitch="handleSwitch">
             </tab>
             <transition mode="out-in" enter-active-class="animated faster fadeInUp" leave-active-class="animated faster fadeOutDown">
-                <dynamic-component :is="currentComponent"></dynamic-component>   
+                  <keep-alive>
+                      <dynamic-component :is="currentComponent"></dynamic-component>   
+                  </keep-alive>
             </transition>
         </div>
     </div>
@@ -109,7 +111,6 @@ export default {
             height rem(40)
             .nav-inner {
                 width 74%
-                height rem(50)
                 & > li {
                     width rem(62)
                     height rem(38)
