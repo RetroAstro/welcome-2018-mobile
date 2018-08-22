@@ -101,7 +101,7 @@ export default {
                             height rem(20)
                             display flex
                             justify-content flex-start
-                            margin-bottom rem(3)
+                            margin-bottom rem(1)
                             & > img {
                                 width auto
                                 height rem(16)

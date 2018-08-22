@@ -46,9 +46,29 @@ export default {
         window.location.href = item.link
       }
       if (item.link === 'map') {
-        this.$emit('launch', '首页')
-        this.$router.push({ path: '/index' })
+        if (this.$route.path === '/index') {
+          this.backtoTop()
+        } else {
+          this.$emit('launch', '首页')
+          this.$router.push({ path: '/index' })
+        }
       }
+    },
+    backtoTop () {
+      var timer = null
+      cancelAnimationFrame(timer)
+      var startTime = +new Date()
+      var b = document.body.scrollTop || document.documentElement.scrollTop
+      var d = 500
+      var c = b
+      timer = requestAnimationFrame(function func () {
+        var t = d - Math.max(0, startTime - (+new Date()) + d)
+        document.documentElement.scrollTop = document.body.scrollTop = t * (-c) / d + b
+        timer = requestAnimationFrame(func)
+        if (t === d) {
+          cancelAnimationFrame(timer)
+        }
+      })
     }
   }
 }

@@ -64,7 +64,7 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.(png|jpe?g|gif|svg|JPG)(\?.*)?$/,
+                test: /\.(png|jpe?g|gif|svg|JPG|ico)(\?.*)?$/,
                 use: [
                     {
                         loader: 'url-loader',

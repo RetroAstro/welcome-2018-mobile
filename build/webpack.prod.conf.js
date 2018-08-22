@@ -78,10 +78,18 @@ const webpackConfig = merge(baseWebpackConfig, {
         filename: 'index.html',
         inject: true,
         chunksSortMode: 'dependency',
+        favicon: path.join(__dirname, '../src/assets/favicon.ico'),
         minify: {
           removeComments: true,
           collapseWhitespace: true,
-          removeAttributeQuotes: true
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+          removeEmptyAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          keepClosingSlash: true,
+          minifyJS: true,
+          minifyCSS: true,
+          minifyURLs: true
         }
       }),
 

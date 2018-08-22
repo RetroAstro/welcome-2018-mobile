@@ -37,6 +37,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       new HtmlWebpackPlugin({
         template: path.join(__dirname, '../src/index.html'),
         filename: 'index.html',
+        favicon: path.join(__dirname, '../src/assets/favicon.ico'),
         inject: true,
         chunksSortMode: 'dependency'
       })
