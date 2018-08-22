@@ -11,7 +11,7 @@
                     <div class="text-row"><img src="../../assets/t_参与对象.png"></div>
                     <div class="text-row">2018级所有小鲜肉可上传照片，全体在校学生参与点赞</div>
                     <div class="text-row"><img src="../../assets/t_活动时间.png"></div>
-                    <div class="text-row">2018年8月26日——2017年9月14日24:00</div>
+                    <div class="text-row">即日起至2018年9月14日24:00</div>
                     <div class="text-row"><img src="../../assets/t_参与方式.png"></div>
                     <div class="text-row">关注微信公众号重邮小帮手，进入“线上互动”,点击“最美班级墙”，即可上传照片。</div>
                 </div>

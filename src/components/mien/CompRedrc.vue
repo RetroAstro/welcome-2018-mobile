@@ -48,7 +48,7 @@ export default {
         }],
         [ {
           src: 'yidong',
-          text: 'Ta主要负责移动端产品的开发，以 Java&Kotlin，OC&Swift，C#为主要开发语言，涵盖Android，iOS，Windows 三个平台。在这里你可以学到App的开发制作。移动互联网就是Ta们的日常，从被大神虐哭到自己成为大神。在移动开发部你将对App开发感兴趣，对App制作有狂热的欲望。'
+          text: 'Ta主要负责移动端产品的开发，以 Java & Kotlin，Objective-C & Swift为主要开发语言，涵盖Android、iOS两个平台。在这里你不但可以学到App开发，还能认识一大群志同道合的朋友。如果你对App开发感兴趣，对App制作有欲望，移动开发部将是你的秀场。来吧，如果你曾抱怨被大神虐哭，现在一个成为大神的机会等着你！'
         }],
         [ {
           src: 'yunwei',
