@@ -105,6 +105,7 @@ export default {
                     .name {
                         flex 2.5
                         font-size rem(14)
+                        color #432c93
                     }
                 }
                 .picture-wrap:first-child {

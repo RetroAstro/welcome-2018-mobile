@@ -25,6 +25,7 @@
                 </div>
             </div> 
         </div>
+        <div class="insert_">资料来源于重邮小卫士</div>
     </div>
 </template>
 
@@ -83,7 +84,16 @@ export default {
     display flex
     align-items flex-end
     justify-content center
-    padding-bottom rem(38)
+    padding-bottom rem(45)
+    .insert_ {
+        position absolute
+        bottom rem(-18)
+        left 50%
+        transform translateX(-50%)
+        font-size rem(8)
+        opacity .4
+        color #442d94
+    }
     .carousel-wrap {
         width rem(277)
         height rem(520)
@@ -99,9 +109,10 @@ export default {
             .title {
                 width 100%
                 height rem(40)
+                transform translateY(rem(3))
                 & > div {
                     width rem(50)
-                    height rem(15)
+                    height rem(17)
                 }
             }
             .left {

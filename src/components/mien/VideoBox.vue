@@ -2,9 +2,10 @@
     <div class="content-box bg-cover-all">
         <div class="video-box bg-cover-all flex-center">
             <div class="video-wrap" @click="handlePlay">
-                <video ref="video" style="width:100%;height:100%;object-fit:fill;" :src="`${require(`../../media/${currentSrc}.mp4`)}`"></video>
-                <div class="video-grey translate-center">
-                    <div class="pause bg-cover-all translate-center"></div>
+                <div class="video-grey bg-cover-all" :style="{ backgroundImage: `url('${require(`../../assets/${currentSrc}`)}')` }">
+                    <div class="grey translate-center">
+                        <div class="pause bg-cover-all translate-center"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -14,8 +15,8 @@
                     <li v-for="(item, index) in items" :key="index" class="video-title">
                         <div 
                         v-for="(video, index) in item" :key="index" 
-                        :class="[{active: currentSrc === video.src }, 'video-text', 'flex-center']" 
-                        @click="currentSrc = video.src">{{video.name}}</div>
+                        :class="[{active: currentLink === video.link }, 'video-text', 'flex-center']" 
+                        @click="handleSwitch(video)">{{video.name}}</div>
                     </li>
                 </ul>
             </div>
@@ -33,71 +34,57 @@ export default {
   data () {
     return {
       currentIndex: 0,
-      player: null,
-      currentSrc: 'zhaosheng',
+      currentLink: 'https://v.qq.com/x/page/i0518koxz3b.html',
+      currentSrc: 'zhaosheng.jpg',
       items: [
         [
           {
             name: '招生宣传片',
-            src: 'zhaosheng'
-          },
-          {
-            name: '军训汇演',
-            src: 'junxunhuiyan'
+            link: 'https://v.qq.com/x/page/i0518koxz3b.html',
+            src: 'zhaosheng.jpg'
           },
           {
             name: '鸟瞰新重邮',
-            src: 'niaokanxinchongyou'
+            link: 'https://v.qq.com/x/page/p0157qsmcuj.html',
+            src: 'niaokanxinchongyou.jpg'
+          },
+          {
+            name: '2017红岩招新',
+            link: 'https://v.qq.com/x/page/o05597e7vw2.html',
+            src: '2017.jpg'
           }
         ],
         [
           {
-            name: '2015红岩招新',
-            src: 'hongyan2015'
-          },
-          {
-            name: '2016红岩招新',
-            src: 'hongyan2016'
-          },
-          {
-            name: '2017红岩招新',
-            src: 'hongyan2017'
-          },
-        ],
-        [
-          {
             name: '樱花季专题',
-            src: 'yinhua'
+            link: 'https://v.qq.com/x/page/u061866c94o.html',
+            src: 'yinhua.png'
           },
           {
             name: '春风十里',
-            src: 'chunfengshili'
+            link: 'https://v.qq.com/x/page/h0392p55io7.html',
+            src: 'chunfengshili.png'
           },
           {
             name: '航拍校运会',
-            src: 'xiaoyunhui'
+            link: 'https://v.qq.com/x/page/p0161krhz05.html',
+            src: 'xiaoyunhui.png'
           }
         ]
       ]
     }
   },
-  mounted () {
-    this.player = this.$refs.video
-    document.addEventListener('webkitfullscreenchange', () => {
-      if (!document.webkitFullscreenElement) {
-        this.player.pause()
-      }
-    })
-  },
   methods: {
     handleClick: util.throttle(function (num) {
       this.currentIndex += num
-      this.currentIndex = this.currentIndex < 0 ? 2 : this.currentIndex > 2 ? 0 : this.currentIndex
+      this.currentIndex = this.currentIndex < 0 ? 1 : this.currentIndex > 1 ? 0 : this.currentIndex
     }, 1500),
     handlePlay () {
-      this.currentSrc = this.player.src
-      this.player.play()
-      this.player.requestFullscreen ? this.player.requestFullscreen() : this.player.webkitRequestFullScreen()
+      window.location.href = this.currentLink
+    },
+    handleSwitch (item) {
+      this.currentLink = item.link
+      this.currentSrc = item.src
     }
   }
 }
@@ -121,11 +108,15 @@ export default {
             width 95%
             height 91%
             position relative
+            .grey {
+                width 100%
+                height 100%
+                background-color rgba(0,0,0,.3)
+            }
             .video-grey {
                 width 100%
                 height 100%
                 z-index 400
-                background-color rgba(0,0,0,.3)
                 .pause {
                     width rem(40)
                     height rem(40)
@@ -147,7 +138,7 @@ export default {
             position relative
             .video-menu {
                 transition all .5s ease-in-out
-                width 300%
+                width 200%
                 height rem(66)
                 display flex
                 align-items center

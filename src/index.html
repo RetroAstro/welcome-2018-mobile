@@ -5,67 +5,308 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta itemprop="name" content="走，到重邮追梦去 | 2018迎新网上线啦！">
+    <meta itemprop="description" content="@2018小鲜肉：你想要的，我们都有！">
+    <meta itemprop="image" content="https://s1.ax1x.com/2018/08/26/Pqpx2Q.png">
     <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
-    <script src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"></script>
-    <title> 走，到重邮追梦去！ </title>
+    <script src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"></script>    
+    <title> 走，到重邮追梦去 | 2018迎新网上线啦！ </title>
     <style>
-    .loading {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff;
-      z-index: 1000;
-    }
-    .spinner {
-      width: 60px;
-      height: 60px;
-      position: relative;
-      margin: 100px auto;
-    }
-    .double-bounce1, .double-bounce2 {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background-color: #43b6ed;
-      opacity: 0.6;
-      position: absolute;
-      top: 0;
-      left: 0;
-      -webkit-animation: bounce 2.0s infinite ease-in-out;
-      animation: bounce 2.0s infinite ease-in-out;
-    }
-    .double-bounce2 {
-      -webkit-animation-delay: -1.0s;
-      animation-delay: -1.0s;
-    }
-    @-webkit-keyframes bounce {
-      0%, 100% { -webkit-transform: scale(0.0) }
-      50% { -webkit-transform: scale(1.0) }
-    }
-    @keyframes bounce {
-      0%, 100% {
-        transform: scale(0.0);
-        -webkit-transform: scale(0.0);
-      } 50% {
-        transform: scale(1.0);
-        -webkit-transform: scale(1.0);
+      .loading-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #e0fcfb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 888888;
       }
-    }
-    </style>
+      .loading-wrapper {
+        width: 295px;
+        height: 60px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .loading-inner {
+        width: 295px;
+        height: 17px;
+        position: relative;
+      }
+      .loading-cloud1 {
+        z-index: 55;
+        position: absolute;
+        left: 8px;
+        top: -75px;
+        width: 120px;
+        height: 90px;
+        position: relative;
+        animation: flow 6s infinite ease-in-out alternate;
+      }
+      .loading-cloud1 > img {
+        width: 100%;
+        height: 100%;
+      }
+      .loading-cloud2 {
+        z-index: 55;
+        position: absolute;
+        left: 140px;
+        top: -138px;
+        width: 43px;
+        height: 60px;
+        position: relative;
+        animation: flow 6s infinite ease-in-out alternate;
+      }
+      .loading-cloud2 > img {
+        width: 100%;
+        height: 100%;
+      }
+      .loading-bar {
+        width: 100%;
+        height: 15px;
+        border-radius: 8px;
+        background: #c4e2ff;
+        position: relative;
+        border: 2px solid #135daf;
+        overflow: hidden;
+      }
+      .loaded-wrap {
+        width: 100%;
+        height: 100%;
+        background: #c4e2ff;
+        border-radius: 8px;
+        position: relative;
+        position: relative;
+        overflow: hidden;
+      }
+      .longer {
+        width: 100%;
+        height: 100%;
+        transform: translate3d(-100%,0,0);
+        position: relative;
+        border-radius: 8px;
+        animation: increase 4.3s;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+        background: repeating-linear-gradient(135deg, #1fdbf5, #1fdbf5 18.75px, #c4feff 18.75px, #c4feff 37.5px);
+      }
+      .plane {
+        position: absolute;
+        z-index: 66;
+        left: -39px;
+        top: -23.5px;
+        width: 112.5px;
+        height: 60px;
+        animation: planeFly 4s;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+      }
+      .plane > img {
+        width: 100%;
+        height: 100%;
+      }
+      .gongzuozhan {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -50px;
+        width: 187.5px;
+        height: 22.5px;
+      }
+      .gongzuozhan > img {
+        width: 100%;
+        height: 100%;
+      }
+      @keyframes flow {
+        0% {
+          transform: translate3d(0, 0, 0)
+        }
+        50% {
+          transform: translate3d(20px, 0, 0)
+        }
+        100% {
+          transform: translate3d(0, 0, 0)
+        }
+      }
+      @-moz-keyframes flow {
+        0% {
+          transform: translate3d(0, 0, 0)
+        }
+        50% {
+          transform: translate3d(20px, 0, 0)
+        }
+        100% {
+          transform: translate3d(0, 0, 0)
+        }
+      }
+      @-webkit-keyframes flow {
+        0% {
+          transform: translate3d(0, 0, 0)
+        }
+        50% {
+          transform: translate3d(20px, 0, 0)
+        }
+        100% {
+          transform: translate3d(0, 0, 0)
+        }
+      }
+      @keyframes planeFly {
+        0% {
+          transform: translate3d(0, 0, 0)
+        }
+        100% {
+          transform: translate3d(250px, 0, 0)
+        }
+      }
+      @-moz-keyframes planeFly {
+        0% {
+          transform: translate3d(0, 0, 0)
+        }
+        100% {
+          transform: translate3d(250px, 0, 0)
+        }
+      }
+      @-webkit-keyframes planeFly {
+        0% {
+          transform: translate3d(0, 0, 0)
+        }
+        100% {
+          transform: translate3d(250px, 0, 0)
+        }
+      }
+      @keyframes increase {
+        0% {
+          transform: translate3d(-100%, 0, 0)
+        }
+        100% {
+          transform: translate3d(0, 0, 0)
+        }
+      }
+      @-webkit-keyframes increase {
+        0% {
+          transform: translate3d(-100%, 0, 0)
+        }
+        100% {
+          transform: translate3d(0, 0, 0)
+        }
+      }
+      @-moz-keyframes increase {
+        0% {
+          transform: translate3d(-100%, 0, 0)
+        }
+        100% {
+          transform: translate3d(0, 0, 0)
+        }
+      }
+      @media screen and (max-width: 360px) {
+          .loading-inner {
+            width: 240px
+          }
+          .plane {
+            position: absolute;
+            z-index: 66;
+            left: -39px;
+            top: -23px;
+            width: 110px;
+            height: 60px;
+            animation: planeFly 4s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+          }
+          @keyframes planeFly {
+              0% {
+                transform: translate3d(0, 0, 0)
+              }
+              100% {
+                transform: translate3d(200px, 0, 0)
+              }
+          }
+          @-moz-keyframes planeFly {
+              0% {
+                transform: translate3d(0, 0, 0)
+              }
+              100% {
+                transform: translate3d(200px, 0, 0)
+              }
+          }
+          @-webkit-keyframes planeFly {
+              0% {
+                transform: translate3d(0, 0, 0)
+              }
+              100% {
+                transform: translate3d(200px, 0, 0)
+              }
+          }
+      }
+    </style> 
   </head>
   <body>
-    <div class="loading">
-        <div class="spinner">
-            <div class="double-bounce1"></div>
-            <div class="double-bounce2"></div>
+    <div class="loading-box">
+      <div class="loading-wrapper">
+        <div class="loading-inner">
+          <div class="loading-bar">
+              <div class="loaded-wrap">
+                <div class="longer">
+                    <div class="loaded"></div>
+                </div>
+              </div>
+          </div>
+          <div class="plane">
+              <img src="./assets/plane.png" rel="preload" href="./img/plane.png" as="image">
+          </div>
+          <div class="loading-cloud1">
+            <img src="./assets/load_cloud1.png" rel="preload" href="./img/load_cloud1.png" as="image">
+          </div>
+          <div class="loading-cloud2">
+            <img src="./assets/load_cloud2.png" rel="preload" href="./img/load_cloud2.png" as="image">
+          </div>
+          <div class="gongzuozhan">
+            <img src="./assets/gongzuozhan.png" rel="preload" href="./img/gongzuozhan.png" as="image">
+          </div>
         </div>
+      </div>
     </div>
     <div id="app"></div>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://wx.idsbllp.cn/wx-api/share.js"></script>
+    <script>
+    WXSHARE.config({ debug: false });
+    WXSHARE.ready(function() {
+        var option = {
+            title: "走，到重邮追梦去 | 2018迎新网上线啦！",
+            link: "http://wx.yyeke.com/nodejs/welcome2018/",
+            imgUrl: 'https://s1.ax1x.com/2018/08/26/Pqpx2Q.png',
+            desc: '@2018小鲜肉：你想要的，我们都有！',
+            type: '',
+            success: function() {
+                console.log('分享成功');
+            },
+            cancel: function() {
+                console.log('取消分享');
+            },
+        };
+        wx.onMenuShareTimeline(option);
+        wx.onMenuShareAppMessage(option);
+        wx.onMenuShareQQ(option);
+        wx.onMenuShareWeibo(option);
+        wx.onMenuShareQZone(option);
+    });
+    </script>
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script")
+            mta.src = "https://pingjs.qq.com/h5/stats.js?v2.0.2"
+            mta.setAttribute("name", "MTAH5")
+            mta.setAttribute("sid", "500634169")
+            var s = document.getElementsByTagName("script")[0]
+            s.parentNode.insertBefore(mta, s)
+        })()
+    </script>
   </body>
 </html>

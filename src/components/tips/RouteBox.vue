@@ -39,7 +39,7 @@ export default {
         },
         {
           name: 'route6',
-          content: '可乘车至南坪后转乘346或347路公交车至学校；直接打车到校费用约为20元。'
+          content: '可乘坐校内观光车到教学楼、宿舍楼等，每人需自备一元现金车票。'
         }
       ]
     }
@@ -61,6 +61,7 @@ export default {
         height 100%
         background-image url('../../assets/security_border.png')
         padding rem(15) rem(15)
+        padding-top rem(10)
         .route {
             width 100%
             .title {
@@ -74,7 +75,7 @@ export default {
             }
             .text {
                 text-align left 
-                font-size rem(13)
+                font-size rem(12.5)
                 color #432c93
             }
         }

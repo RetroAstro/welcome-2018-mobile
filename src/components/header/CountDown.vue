@@ -33,7 +33,7 @@ export default {
   methods: {
     countTime () {
       var now = new Date().getTime()
-      var str = '2018/9/14 00:00:00'
+      var str = '2018/9/13 00:00:00'
       var end = new Date(str).getTime()
       var left = end - now
       var list = [93.5, 70, 50, 30, 10, -10, -30, -52, -75, -98]
@@ -49,6 +49,13 @@ export default {
           var single = list[parseInt(arr[index] % 10)]
           this.timeList[time] = [double, single]
         })
+      } else {
+        this.timeList = {
+          day: [93.5, 93.5],
+          hour: [93.5, 93.5],
+          minute: [93.5, 93.5],
+          second: [93.5, 93.5]
+        }
       }
     },
     clear () {
@@ -66,7 +73,6 @@ export default {
 .count-inner {
     width 100%
     height 100%
-    transform translate(rem(-4), rem(-2))
     .time {
         overflow hidden
         & > span {

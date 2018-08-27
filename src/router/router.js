@@ -37,6 +37,10 @@ export default new VueRouter({
           component: async.Analyze
         }
       ]
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })

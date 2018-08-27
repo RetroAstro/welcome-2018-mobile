@@ -2,9 +2,10 @@
     <div class="content-box bg-cover-all">
         <div class="video-box bg-cover-all flex-center">
             <div class="video-wrap flex-center" @click="handlePlay">
-                <video ref="video" style="width:100%;height:100%;object-fit:fill;" :src="`${require(`../../media/${currentSrc}.mp4`)}`"></video>
-                <div class="video-grey translate-center">
-                    <div class="pause bg-cover-all translate-center"></div>
+                <div class="video-grey bg-cover-all" :style="{ backgroundImage: `url('${require(`../../assets/${currentSrc}.png`)}')` }">
+                    <div class="grey translate-center">
+                        <div class="pause bg-cover-all translate-center"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -12,14 +13,15 @@
             <div class="video-menu-wrap">
                 <ul class="video-menu flex-between">
                     <li v-for="(item, index) in items" :key="index"
-                    :class="[{active: currentSrc === item.src }, 'video-text','flex-center']"
-                    @click="currentSrc = item.src"
+                    :class="[{active: currentLink === item.link }, 'video-text','flex-center']"
+                    @click="handleSwitch(item)"
                     >
                     {{item.name}}
                     </li>
                 </ul>
             </div>
         </div>
+        <div class="insert_">资料来源于重邮小卫士</div>
     </div>
 </template>
 
@@ -31,31 +33,26 @@ export default {
   data () {
     return {
       currentIndex: 0,
-      player: null,
       currentSrc: 'xiaoshipin',
+      currentLink: 'https://v.qq.com/x/page/z0525ekdm55.html',
       items: [
         {
           name: '军训小视频',
+          link: 'https://v.qq.com/x/page/z0525ekdm55.html',
           src: 'xiaoshipin'
         },
         {
           name: '重邮军魂',
+          link: 'https://v.qq.com/x/page/z0551q3y942.html',
           src: 'chongyoujunhun'
         },
         {
           name: '军训汇演',
+          link: 'https://v.qq.com/x/page/b0556ldsq1r.html',
           src: 'junxunhuiyan'
         }
       ]
     }
-  },
-  mounted () {
-    this.player = this.$refs.video
-    document.addEventListener('webkitfullscreenchange', () => {
-      if (!document.webkitFullscreenElement) {
-        this.player.pause()
-      }
-    })
   },
   methods: {
     handleClick: util.throttle(function (num) {
@@ -63,9 +60,11 @@ export default {
       this.currentIndex = this.currentIndex < 0 ? 2 : this.currentIndex > 2 ? 0 : this.currentIndex
     }, 1500),
     handlePlay () {
-      this.currentSrc = this.player.src
-      this.player.play()
-      this.player.requestFullscreen ? this.player.requestFullscreen() : this.player.webkitRequestFullScreen()
+      window.location.href = this.currentLink
+    },
+    handleSwitch (item) {
+      this.currentLink = item.link
+      this.currentSrc = item.src
     }
   }
 }
@@ -80,6 +79,15 @@ export default {
     padding-left rem(29)
     padding-right rem(40)
     padding-bottom rem(20)
+    .insert_ {
+        position absolute
+        bottom rem(-16)
+        left 50%
+        transform translateX(-50%)
+        font-size rem(8)
+        opacity .4
+        color #442d94
+    }
     .video-box {
         width 100%
         height rem(145)
@@ -88,11 +96,15 @@ export default {
             width 95%
             height 91%
             position relative
+            .grey {
+                width 100%
+                height 100%
+                background-color rgba(0,0,0,.3)
+            }
             .video-grey {
                 width 100%
                 height 100%
                 z-index 400
-                background-color rgba(0,0,0,.3)
                 .pause {
                     width rem(40)
                     height rem(40)

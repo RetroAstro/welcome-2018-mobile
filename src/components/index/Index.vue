@@ -1,6 +1,6 @@
 <template>
     <div class="index-wrapper">
-        <div class="topic-wrapper" ref="wrapper">
+        <div class="topic-wrapper animated" ref="wrapper">
             <div class="pipe-one bg-cover-all"></div>
             <div class="pipe-two bg-cover-all"></div>
             <div class="pipe-three bg-cover-all"></div>
@@ -12,7 +12,7 @@
                 <div class="title bg-cover-all"></div>
                 <div class="content bg-cover-all">
                     <div class="map-wrap">
-                        <img src="../../assets/map.jpg" preview="0" rel="preload" href="/img/map.jpg" as="image">
+                        <img src="../../assets/map.jpg" preview="0" rel="preload" href="./img/map.jpg" as="image">
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                             <img src="../../assets/training.png" class="training animated pulse">
                         </div>
                         <div class="text-box">
-                            迈着矫健的步伐，挺拔身姿，跑道上留下他们坚定的足迹，重邮学子，他们像东方升起的旭日，续写着一段奋力拼搏的历史。
+                            迈着矫健的步伐，挺拔的身姿，跑道上留下他们勇往直前的足迹，重邮学子，他们像东方升起的旭日，续写着一段奋力拼搏的历史。
                         </div>
                         <div class="dots bg-cover-all"></div>
                         <div class="know-more">
@@ -81,7 +81,7 @@
                             <img src="../../assets/mien.png" class="mien animated pulse">
                         </div>
                         <div class="text-box">
-                            优秀教师和优秀学长学姐都在你身边，你会成为他们吗？各大校级学生组织精彩原创视频等你来戳！
+                            优秀教师和优秀学长学姐都在你身边，你会成为他们吗？更多精彩原创视频等你来戳！
                         </div>
                         <div class="dots bg-cover-all"></div>
                         <div class="know-more">
@@ -121,12 +121,15 @@
 export default {
   created () {
     setTimeout(() => {
-      document.querySelector('.loading').outerHTML = ''
-      this.$refs.wrapper.classList.add('animated', 'bounceIn')
+      document.querySelector('.loading-box').outerHTML = ''
+      var header = document.querySelector('.header .btns-box')
+      header.classList.add('bounceIn')
+      this.$refs.wrapper.classList.add('bounceIn')
       setTimeout(() => {
-        this.$refs.wrapper.classList.remove('animated', 'bounceIn')
+        this.$refs.wrapper.classList.remove('bounceIn')
+        header.classList.remove('bounceIn')
       }, 2000)
-    }, 1000)
+    }, 3200)
   },
   methods: {
     handleSwitch (item) {
@@ -166,6 +169,8 @@ export default {
 .index-wrapper {
     height rem(3320)
     margin-top rem(50)
+    position relative
+    z-index 22
     .topic-wrapper {
         position relative
         width 100%

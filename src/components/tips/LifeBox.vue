@@ -230,6 +230,7 @@ export default {
                 .photo {
                     width 100%
                     height rem(85)
+                    border 1.5px solid #135daf
                     & > img {
                         width 100%
                         height 100%

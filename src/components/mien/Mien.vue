@@ -91,7 +91,7 @@ export default {
     width 100%
     margin-top rem(70)
     position relative
-    z-index 21
+    z-index 22
     padding-left rem(22)
     .mien-box {
         .title {

@@ -120,6 +120,7 @@ export default {
                     width 100%
                     text-align left 
                     font-size rem(12)
+                    line-height rem(16)
                     color #432c93
                     letter-spacing .5px
                     position relative

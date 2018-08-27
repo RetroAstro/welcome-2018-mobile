@@ -93,7 +93,7 @@ export default {
     width 100%
     margin-top rem(70)
     position relative
-    z-index 20
+    z-index 22
     .activity-box {
         position relative
         padding-left rem(21)

@@ -103,7 +103,7 @@ export default {
                 justify-content flex-start
                 align-items center
                 .font {
-                    width rem(66)
+                    width rem(68)
                     height rem(18)
                     background-image url('../../assets/diet.png')
                     &::before {

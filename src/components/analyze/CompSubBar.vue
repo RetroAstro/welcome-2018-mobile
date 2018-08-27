@@ -60,6 +60,9 @@ export default {
               type: 'value',
               min: 0,
               max: 0.5,
+              splitLine: {
+                show: false
+              },
               axisLabel: {
                 show: true,
                 textStyle: {

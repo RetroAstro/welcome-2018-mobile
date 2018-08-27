@@ -19,7 +19,7 @@ export default {
       items: [
         {
           name: 'baodaoshijian',
-          content: '本科新生2018年9月14、15日报道'
+          content: '本科新生2018年9月13、14日报道'
         },
         {
           name: 'baodaodidian',

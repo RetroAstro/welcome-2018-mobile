@@ -9,11 +9,11 @@
                     <div class="text-row"><img src="../../assets/t_活动主题.png"></div>
                     <div class="text-row">晒出萌新照，为班级集赞</div>
                     <div class="text-row"><img src="../../assets/t_参与对象.png"></div>
-                    <div class="text-row">2018级所有小鲜肉可上传照片，全体在校学生参与点赞</div>
+                    <div class="text-row">2018级新生</div>
                     <div class="text-row"><img src="../../assets/t_活动时间.png"></div>
-                    <div class="text-row">即日起至2018年9月14日24:00</div>
+                    <div class="text-row">即将启动，敬请期待</div>
                     <div class="text-row"><img src="../../assets/t_参与方式.png"></div>
-                    <div class="text-row">关注微信公众号重邮小帮手，进入“线上互动”,点击“最美班级墙”，即可上传照片。</div>
+                    <div class="text-row">关注微信公众号重邮小帮手，进入“线上互动”，点击“最美班级墙”，即可上传照片或进行点赞</div>
                 </div>
             </div>
         </div>
@@ -63,6 +63,8 @@ export default {
                     width 100%
                     display flex
                     justify-content flex-start
+                    font-size rem(11)
+                    transform translateY(rem(-2))
                     & > img {
                         width auto
                         height rem(14)

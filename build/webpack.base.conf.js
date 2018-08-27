@@ -64,6 +64,10 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
+                test: /\.(htm|html)$/i,
+                 use:[ 'html-withimg-loader'] 
+            },
+            {
                 test: /\.(png|jpe?g|gif|svg|JPG|ico)(\?.*)?$/,
                 use: [
                     {
@@ -71,7 +75,7 @@ module.exports = {
                         options: {
                           limit: 15000,
                           name: utils.assetsPath('img/[name].[ext]'),
-                          publicPath: '/'
+                          publicPath: './'
                         }
                     },
                     {
@@ -95,7 +99,7 @@ module.exports = {
                 options: {
                   limit: 10000,
                   name: utils.assetsPath('media/[name].[ext]'),
-                  publicPath: '/'
+                  publicPath: './'
                 }
             },
             {

@@ -4,8 +4,8 @@ const path = require('path')
 module.exports = {
     build: {
         assetsRoot: path.resolve(__dirname, '../dist'),
-        assetsSubDirectory: 'mobile',
-        assetsPublicPath: '/',
+        assetsSubDirectory: '',
+        assetsPublicPath: './',
         productionSourceMap: false,
         productionGzip: true,
         productionGzipExtensions: ['js', 'css'],
