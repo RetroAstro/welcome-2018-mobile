@@ -10,8 +10,7 @@
                         <div class="club-title">
                             <img :src="`${require(`../../assets/${item.name}.png`)}`" class="title">
                         </div>
-                        <div class="text-content">
-                            {{item.content}}
+                        <div class="text-content" v-html="item.content">
                         </div>
                     </div>
                 </div>  
@@ -61,6 +60,36 @@ export default {
         },
         {
           value: '大学生艺术团'
+        },
+        {
+          value: '学生学业互助中心'
+        },
+        {
+          value: '勤工助学中心'
+        },
+        {
+          value: '重邮e站微+平台'
+        },
+        {
+          value: '心理互助中心'
+        },
+        {
+          value: '学生宿舍自我管理与服务委员会'
+        },
+        {
+          value: '党委学工部/学生处学工助理团'
+        },
+        {
+          value: '电视台'
+        },
+        {
+          value: '新媒体工作站'
+        },
+        {
+          value: '学生通讯社'
+        },
+        {
+          value: '阳光校园广播台'
         }
       ],
       itemList: {

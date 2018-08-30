@@ -43,22 +43,27 @@ export default {
           text: '粤语社 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;桌游协会<br/>创客部落 &nbsp; &nbsp; &nbsp;物联网协会<br/>推理协会 &nbsp; &nbsp; &nbsp; 象棋协会 &nbsp; &nbsp; &nbsp; &nbsp;航模协会'
         },
         {
+          src: 'xianjin',
+          text: '机器人协会'
+        },
+        {
           src: 'guangdian',
           text: '科幻协会 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;半导体协会 <br/>TG精英社 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;科技创新协会 <br/>道路交通安全协会 &nbsp; &nbsp;素质拓展协会'
         }
         ],
-        [ {
-          src: 'ruanjian',
-          text: '龙影棍道协会 &nbsp; &nbsp; &nbsp; &nbsp;跑步爱好者协会<br/>西乐社CSDN俱乐部'
-        },
-        {
-          src: 'lixueyuan',
-          text: '天文爱好者协会 &nbsp; &nbsp;&nbsp;数学俱乐部<br/>数学建模协会 &nbsp; &nbsp; &nbsp; &nbsp;物理协会科普写作社'
-        },
-        {
-          src: 'jinguan',
-          text: '电子商务协会 &nbsp; &nbsp; &nbsp; &nbsp;金融协会<br/>创业者协会 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 市场营销协会ERP协会'
-        }
+        [
+          {
+            src: 'ruanjian',
+            text: '龙影棍道协会 &nbsp; &nbsp; &nbsp; &nbsp;跑步爱好者协会<br/>西乐社CSDN俱乐部'
+          },
+          {
+            src: 'lixueyuan',
+            text: '天文爱好者协会 &nbsp; &nbsp;&nbsp;数学俱乐部<br/>数学建模协会 &nbsp; &nbsp; &nbsp; &nbsp;物理协会科普写作社'
+          },
+          {
+            src: 'jinguan',
+            text: '电子商务协会 &nbsp; &nbsp; &nbsp; &nbsp;金融协会<br/>创业者协会 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 市场营销协会ERP协会'
+          }
         ],
         [ {
           src: 'chuanmei',
@@ -84,17 +89,17 @@ export default {
         ],
         [
           {
-            src: 'makesi',
-            text: '三农协会'
-          },
-          {
             src: 'tiyu',
             text: '健身协会&nbsp; &nbsp; &nbsp;足球协会&nbsp; &nbsp; &nbsp;篮球协会<br/>体育舞蹈协会&nbsp; &nbsp;健美操协会&nbsp; &nbsp;跆拳道协会<br/>武术协会&nbsp; &nbsp; &nbsp;乒乓球协会&nbsp; &nbsp; &nbsp;羽毛球协会<br/>瑜伽协会&nbsp; &nbsp; &nbsp;排球社&nbsp; &nbsp; &nbsp;花样跳绳协会'
           },
           {
+            src: 'makesi',
+            text: '三农协会'
+          },
+          {
             src: 'tuanwei',
             text: '骆驼社 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 吉他社 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;辩论协会<br/>心理协会 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;历史协会'
-          },
+          }
         ],
         [
           {
