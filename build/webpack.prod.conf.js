@@ -70,7 +70,7 @@ const webpackConfig = merge(baseWebpackConfig, {
 
       new MiniCssExtractPlugin({
         filename: utils.assetsPath('app.[name].css'),
-        chunkFilename: utils.assetsPath('app.[contenthash:12].css'),
+        chunkFilename: utils.assetsPath('app.[contenthash:12].css')
       }),
 
       new HtmlWebpackPlugin({

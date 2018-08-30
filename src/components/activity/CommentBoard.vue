@@ -56,7 +56,8 @@ export default {
     return {
       show: false,
       question: {},
-      commentList: []
+      commentList: [],
+      scroll: null
     }
   },
   mounted () {
@@ -80,13 +81,7 @@ export default {
       this.$nextTick(() => {
         if (!this.scroll) {
           this.scroll = new BScroll(this.$refs.commentScroll, {
-            scrollY: true,
-            pullUpLoad: {
-              threshold: -80
-            }
-          })
-          this.scroll.on('pullingUp', () => {
-            this.getcomment(id)
+            scrollY: true
           })
         } else {
           this.scroll.refresh()
