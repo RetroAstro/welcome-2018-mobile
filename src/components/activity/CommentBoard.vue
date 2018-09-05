@@ -57,7 +57,7 @@ export default {
       show: false,
       question: {},
       commentList: [],
-      scroll: null
+      scroll: ''
     }
   },
   mounted () {

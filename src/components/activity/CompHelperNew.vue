@@ -43,7 +43,7 @@ export default {
     return {
       quesList: [],
       page: 1,
-      scroll: null,
+      scroll: '',
       id: 0,
       show: false
     }

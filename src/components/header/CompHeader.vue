@@ -138,7 +138,6 @@ export default {
       this.$emit('launch', item.name)
       if (item.path === 'about') {
         window.location.href = 'http://hongyan.cqupt.edu.cn/aboutus/'
-        return
       }
       item.path === 'activity' ? this.$router.push({path: `/${item.path}/help`}) : this.$router.push({path: `/${item.path}`})
     }
