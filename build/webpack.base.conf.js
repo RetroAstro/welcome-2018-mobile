@@ -27,7 +27,7 @@ module.exports = {
             'vue$': 'vue/dist/vue.esm.js',
             '@utils': resolve('src/utils'),
             '@service': resolve('src/service'),
-            '@api': resolve('src/api'),
+            '@api': resolve('src/api')
         }
     },
     module: {
@@ -43,11 +43,6 @@ module.exports = {
             //     include: [resolve('src')],
             //     exclude: /node_modules/
             // },
-            {
-                test: /\.css$/,
-                loader: 'css-loader',
-                include: [resolve('node_modules')]
-            },
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
@@ -65,7 +60,7 @@ module.exports = {
             },
             {
                 test: /\.(htm|html)$/i,
-                 use:[ 'html-withimg-loader'] 
+                use:[ 'html-withimg-loader'] 
             },
             {
                 test: /\.(png|jpe?g|gif|svg|JPG|ico)(\?.*)?$/,
