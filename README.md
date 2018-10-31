@@ -27,7 +27,7 @@
 使用
 
 ```
-$ git clone https://github.com/RetroAstro/Welcome-2018-Mobile.git (your-project-name)
+$ git clone https://github.com/RetroAstro/welcome-2018-mobile.git (your-project-name)
 
 $ cd your-project-name
 
