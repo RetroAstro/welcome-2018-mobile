@@ -2,7 +2,9 @@
 
 ![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000) &nbsp; ![code-style-standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)
 
-2018 迎新网移动端 H5
+#### 2018 迎新网移动端 H5
+
+![FgUOQP.png](https://s1.ax1x.com/2018/12/25/FgUOQP.png)
 
 技术栈
 
@@ -36,6 +38,3 @@ $ npm install
 $ npm run dev
 ```
 
-在线二维码演示地址：
-
-![FgUOQP.png](https://s1.ax1x.com/2018/12/25/FgUOQP.png)
