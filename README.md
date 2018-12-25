@@ -4,8 +4,6 @@
 
 2018 迎新网移动端 H5
 
-![FgUOQP.png](https://s1.ax1x.com/2018/12/25/FgUOQP.png)
-
 技术栈
 
 * vue
@@ -38,3 +36,6 @@ $ npm install
 $ npm run dev
 ```
 
+在线二维码演示地址：
+
+![FgUOQP.png](https://s1.ax1x.com/2018/12/25/FgUOQP.png)
