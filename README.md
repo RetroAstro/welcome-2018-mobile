@@ -4,7 +4,7 @@
 
 #### 2018 迎新网移动端 H5
 
-![FgUOQP.png](https://s1.ax1x.com/2018/12/25/FgUOQP.png)
+![ktCQ1J.png](https://s2.ax1x.com/2019/02/06/ktCQ1J.png)
 
 技术栈
 
