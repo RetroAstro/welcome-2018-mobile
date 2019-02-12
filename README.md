@@ -2,7 +2,7 @@
 
 ![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000) &nbsp; ![code-style-standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)
 
-#### 2018 迎新网移动端 H5
+#### 2018 迎新网移动端 SPA
 
 ![ktCrnI.png](https://s2.ax1x.com/2019/02/06/ktCrnI.png)
 
