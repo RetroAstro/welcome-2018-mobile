@@ -6,19 +6,19 @@
 
 ![ktCrnI.png](https://s2.ax1x.com/2019/02/06/ktCrnI.png)
 
-技术栈
+**技术栈**
 
 * vue
 * vue-router
 * webpack
 
-工作流
+**工作流**
 
 * eslint
 * stylus
 * postcss
 
-用到的库和插件
+**用到的库和插件**
 
 * axios
 * echarts
@@ -26,7 +26,7 @@
 * better-scroll
 * vue-photo-preview
 
-使用
+**使用**
 
 ```
 $ git clone https://github.com/RetroAstro/welcome-2018-mobile.git (your-project-name)
