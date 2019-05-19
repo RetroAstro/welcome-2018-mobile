@@ -4,7 +4,7 @@
 
 #### 2018 迎新网移动端 SPA
 
-![ktCrnI.png](https://s2.ax1x.com/2019/02/06/ktCrnI.png)
+![](https://s2.ax1x.com/2019/05/19/EXLowR.png)
 
 **技术栈**
 
