@@ -4,7 +4,7 @@
 
 #### 2018 迎新网移动端 SPA
 
-![](https://s2.ax1x.com/2019/05/19/EXLowR.png)
+![](https://images.retroastro.now.sh/assets/qrcode.png)
 
 **技术栈**
 
