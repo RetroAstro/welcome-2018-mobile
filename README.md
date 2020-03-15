@@ -1,6 +1,6 @@
 ## Welcome 2018 Mobile
 
-![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000) &nbsp; ![code-style-standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)
+![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000) &nbsp;![code-style-standard](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)
 
 #### 2018 迎新网移动端 SPA
 
